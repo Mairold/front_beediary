@@ -6,7 +6,7 @@
         <router-link to="/about">About</router-link>
       </nav>
     </div>
-    <router-view/>
+    <router-view @emitLoginSuccessEvent = 'checkIfIsLoggedIn'/>
   </div>
 </template>
 

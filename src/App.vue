@@ -1,12 +1,38 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <div v-if="isLoggedIn">
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </nav>
+    </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'AppView',
+  data: function () {
+    return {
+      isLoggedIn: false
+    }
+  },
+  methods: {
+    checkIfIsLoggedIn(){
+      if (sessionStorage.getItem('userId')== null) {
+        this.isLoggedIn = false
+      } else {
+        this.isLoggedIn = true
+      }
+    }
+  },
+  beforeMount() {
+    this.checkIfIsLoggedIn()
+  }
+}
+</script>
+
 
 <style>
 #app {

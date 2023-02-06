@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    checkIfIsLoggedIn(){
+    checkIfIsLoggedIn: function (){
       if (sessionStorage.getItem('userId')== null) {
         this.isLoggedIn = false
       } else {

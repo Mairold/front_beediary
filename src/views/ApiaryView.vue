@@ -3,15 +3,12 @@
     <div class="row justify-content-center">
 
       <div class="col-2">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-            Mesilad
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Mesila 1</a></li>
-          </ul>
-        </div>
+
+        <select class="form-select">
+          <option>Mesilad</option>
+          <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryId }}</option>
+        </select>
+
       </div>
       <div class="col-6">
         <table class="table">
@@ -40,24 +37,37 @@
 <script>
 export default {
   name: "ApiaryView",
-  methods:{
-    someMethodName: function () {
-      this.$http.get("/some/path", {
-            params: {
-              someRequestParam1: this.someDataBlockVariable1,
-              someRequestParam2: this.someDataBlockVariable2
-            }
-          }
-      ).then(response => {
-        console.log(response.data)
-      }).catch(error => {
-        console.log(error)
+  data: function () {
+    return {
+
+      userId: 0,
+      userApiaries: [
+        {
+          apiaryId: 0,
+          apiaryName: ''
+        }
+      ],
+
+    }
+
+  },
+  methods: {
+    getAllUserApiaries: function () {
+      this.$http.get("/apiary", {
+        params: {
+          // userId: userId  - siin on midagi valesti?!
+        }
       })
+          .then(result => {
+            this.userApiaries = result.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
     },
+  },
+  beforeMount() {
+    this.getAllUserApiaries()
   }
 }
 </script>
-
-<style scoped>
-
-</style>

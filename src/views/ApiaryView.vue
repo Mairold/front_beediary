@@ -6,7 +6,7 @@
 
         <select class="form-select">
           <option>Mesilad</option>
-          <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryId }}</option>
+          <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
         </select>
 
       </div>
@@ -39,23 +39,20 @@ export default {
   name: "ApiaryView",
   data: function () {
     return {
-
-      userId: 0,
+      userId: sessionStorage.getItem('userId'),
       userApiaries: [
         {
           apiaryId: 0,
           apiaryName: ''
         }
-      ],
-
+      ]
     }
-
   },
   methods: {
     getAllUserApiaries: function () {
       this.$http.get("/apiary", {
         params: {
-          // userId: userId  - siin on midagi valesti?!
+          userId: this.userId
         }
       })
           .then(result => {

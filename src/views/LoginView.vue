@@ -43,6 +43,8 @@ export default {
       }).then(response => {
         this.loginResponse = response.data
         sessionStorage.setItem('userId', this.loginResponse.userId)
+        this.$emit('emitLoginSuccessEvent')
+        this.$router.push({name:'apiaryRoute'})
       })
           .catch(error => {
             console.log(error)

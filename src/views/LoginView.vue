@@ -5,13 +5,13 @@
         <div class="mb-3 row">
           <label class="col-sm-2 col-form-label">E-mail</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control">
+            <input v-model="email" type="email" class="form-control">
           </div>
         </div>
         <div class="mb-3 row">
           <label class="col-sm-2 col-form-label">Parool</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control">
+            <input v-model="password" type="password" class="form-control">
           </div>
         </div>
         <button v-on:click="sendLoginRequest" type="button" class="btn btn-warning">Logi sisse</button>
@@ -42,7 +42,6 @@ export default {
         }
       }).then(response => {
         this.loginResponse = response.data
-
         sessionStorage.setItem('userId', this.loginResponse.userId)
       })
           .catch(error => {

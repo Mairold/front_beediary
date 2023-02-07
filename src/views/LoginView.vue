@@ -28,7 +28,6 @@ export default {
       loginResponse: {
         userId: 0
       },
-
       email: '',
       password: ''
     }
@@ -44,14 +43,12 @@ export default {
         this.loginResponse = response.data
         sessionStorage.setItem('userId', this.loginResponse.userId)
         this.$emit('emitLoginSuccessEvent')
-        this.$router.push({name:'apiaryRoute'})
+        this.$router.push({name: 'apiaryRoute'})
       })
           .catch(error => {
             console.log(error)
           })
-    }
-    ,
-
+    },
   }
 }
 </script>

@@ -39,7 +39,22 @@
 
 <script>
 export default {
-  name: "ApiaryView"
+  name: "ApiaryView",
+  methods:{
+    someMethodName: function () {
+      this.$http.get("/some/path", {
+            params: {
+              someRequestParam1: this.someDataBlockVariable1,
+              someRequestParam2: this.someDataBlockVariable2
+            }
+          }
+      ).then(response => {
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+  }
 }
 </script>
 

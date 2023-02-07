@@ -2,8 +2,8 @@
   <div id="app">
     <div v-if="isLoggedIn">
       <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+        <router-link to="/">Kodu</router-link> |
+        <router-link to="/login">Logi sisse</router-link>
       </nav>
     </div>
     <router-view @emitLoginSuccessEvent = 'checkIfIsLoggedIn'/>

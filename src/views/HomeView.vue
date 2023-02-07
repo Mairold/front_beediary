@@ -3,7 +3,7 @@
     <h1>Tere tulemast!</h1>
     <img alt="Bee logo" src="../assets/bee.gif">
     <div>
-      <button type="button" class="btn btn-warning">Logi sisse</button>
+      <button v-on:click="navigateToLogin" type="button" class="btn btn-warning">Logi sisse</button>
     </div>
   </div>
 
@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  name: "HomeView"
+  name: "HomeView",
+  methods: {
+    navigateToLogin: function () {
+      this.$router.push({name:'loginRoute'})
+    }
+  }
 }
 </script>
 

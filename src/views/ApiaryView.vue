@@ -1,54 +1,29 @@
 <template>
   <div>
     <div class="row justify-content-center">
-
       <div class="col-2">
-        <select class="form-select">
-          <option>Mesilad</option>
-          <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
-        </select>
+        <ApiariesDropdown @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
       </div>
-
-
-      <HiveTable/>
+      <HivesTable ref="hives"/>
     </div>
   </div>
 </template>
 
 <script>
-import HiveTable from "@/views/HiveTable.vue";
+import ApiariesDropdown from "@/views/ApiariesDropdown.vue";
+import HivesTable from "@/views/HivesTable.vue";
 
 export default {
   name: "ApiaryView",
-  components: {HiveTable},
+  components: {HivesTable, ApiariesDropdown},
   data: function () {
     return {
-      userId: sessionStorage.getItem('userId'),
-      userApiaries: [
-        {
-          apiaryId: 0,
-          apiaryName: ''
-        }
-      ]
     }
   },
   methods: {
-    getAllUserApiaries: function () {
-      this.$http.get("/apiary", {
-        params: {
-          userId: this.userId
-        }
-      })
-          .then(result => {
-            this.userApiaries = result.data
-          })
-          .catch(error => {
-            console.log(error)
-          })
-    },
-  },
-  beforeMount() {
-    this.getAllUserApiaries()
+    setSelectedApiaryId: function (apiaryId) {
+      this.$refs.hives.getAllUserHives(apiaryId)
+    }
   }
 }
 </script>

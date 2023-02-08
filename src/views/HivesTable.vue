@@ -12,7 +12,7 @@
       <tbody>
       <tr v-for="hive in hives">
         <td>{{hive.hiveName}}</td>
-        <td>???</td>
+        <td>{{hive.lastVisitDate}}</td>
         <td>{{hive.typeSize}}</td>
         <td>{{hive.apiaryName}}</td>
       </tr>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'HiveTable',
+  name: 'HivesTable',
   data: function () {
     return {
       userId: sessionStorage.getItem('userId'),
@@ -33,18 +33,19 @@ export default {
           hiveId: 0,
           apiaryName: '',
           typeSize: '',
-          hiveName: '',
+          lastVisitDate: '',
+          hiveName: ''
         }
-      ]
+      ],
     }
-
   },
   methods: {
-    getAllUserHives: function () {
+    getAllUserHives: function (apiaryId) {
+
       this.$http.get("/apiary/hives", {
             params: {
               userId: this.userId,
-              apiaryId: 0
+              apiaryId: apiaryId
             }
           }
       ).then(response => {
@@ -52,11 +53,12 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+
     },
 
   },
   beforeMount() {
-    this.getAllUserHives()
+    this.getAllUserHives(0)
   }
 }
 </script>

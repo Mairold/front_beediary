@@ -3,40 +3,24 @@
     <div class="row justify-content-center">
 
       <div class="col-2">
-
         <select class="form-select">
           <option>Mesilad</option>
           <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
         </select>
+      </div>
 
-      </div>
-      <div class="col-6">
-        <table class="table">
-          <thead>
-          <tr>
-            <th scope="col">Taru nimi</th>
-            <th scope="col">Viimati külastatud</th>
-            <th scope="col">Taru suurus</th>
-            <th scope="col">Mesila</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th>???</th>
-            <td>???</td>
-            <td>???</td>
-            <td>???</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+
+      <HiveTable/>
     </div>
   </div>
 </template>
 
 <script>
+import HiveTable from "@/views/HiveTable.vue";
+
 export default {
   name: "ApiaryView",
+  components: {HiveTable},
   data: function () {
     return {
       userId: sessionStorage.getItem('userId'),

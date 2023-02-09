@@ -11,10 +11,14 @@
       </thead>
       <tbody>
       <tr v-for="hive in hives">
-        <td>{{hive.hiveName}}</td>
-        <td>{{hive.lastVisitDate}}</td>
-        <td>{{hive.typeSize}}</td>
-        <td>{{hive.apiaryName}}</td>
+        <td>
+          <router-link :to="{name: 'hiveRoute'}">
+            {{ hive.hiveName }}
+          </router-link>
+        </td>
+        <td>{{ hive.lastVisitDate }}</td>
+        <td>{{ hive.typeSize }}</td>
+        <td>{{ hive.apiaryName }}</td>
       </tr>
       </tbody>
     </table>

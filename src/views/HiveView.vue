@@ -10,7 +10,7 @@
       <HiveNameInput ref="hiveNameInput" @emitHiveNameEvent="setHiveRequestHiveName"/>
       <HiveNotesInputBox ref="hiveNotesInputBox" @emitHiveNoteEvent="setHiveRequestHiveNote" />
       <div>
-        <button type="button" class="btn btn-warning">Salvesta</button>
+        <button  v-on:click="addHive"  type="button" class="btn btn-warning">Salvesta</button>
       </div>
       <div>
         <button v-on:click="navigateToApiaryView" type="button" class="btn btn-warning">Tühista</button>
@@ -21,7 +21,7 @@
       <HiveSizeDropdown ref="hiveSizeDropdown" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
       <ApiariesDropdown ref="apiariesDropdown" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
       <div>
-        <button v-on:click="postHive" type="button" class="btn btn-warning">Lisa uus</button>
+        <button type="button" class="btn btn-warning">Lisa uus</button>
       </div>
     </div>
   </div>
@@ -52,8 +52,17 @@ export default {
     navigateToApiaryView: function () {
       this.$router.push({name: 'apiaryRoute'})
     },
+    callAllHiveRequests: function () {
+     this.$refs.hiveNameInput.emitHiveName()
+     this.$refs.hiveNotesInputBox.emitHiveNote()
+    },
+    addHive: function () {
+    this.callAllHiveRequests()
+    this.postHive()
+    },
 
     postHive: function () {
+      // todo uue hive-i lisamine korda teha ja lõpetada
       this.$http.post("/apiary", this.hiveRequest
       ).then(response => {
         console.log(response.data)

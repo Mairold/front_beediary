@@ -1,8 +1,11 @@
 <template>
-  <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" class="form-select">
-    <option value="0">Mesilad</option>
-    <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
-  </select>
+  <div class="col-4">
+    <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" class="form-select">
+      <option value="0">Mesilad</option>
+      <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
+    </select>
+  </div>
+
 </template>
 <script>
 export default {
@@ -35,7 +38,6 @@ export default {
     },
     emitSelectedApiaryId: function () {
       this.$emit('emitSelectedApiaryIdEvent',this.selectedApiaryId)
-
     }
   },
   beforeMount() {

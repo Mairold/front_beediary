@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
 import ApiaryView from "@/views/ApiaryView.vue";
+import HiveView from "@/views/HiveView.vue";
 
 Vue.use(VueRouter)
 
@@ -21,9 +22,11 @@ const routes = [
     path: '/apiary',
     name: 'apiaryRoute',
     component: ApiaryView
-  },
-
-
+  },{
+    path: '/hive',
+    name: 'hiveRoute',
+    component: HiveView
+  }
 ]
 
 const router = new VueRouter({

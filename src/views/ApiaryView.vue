@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row justify-content-center">
-      <div class="col-2">
+      <div class="col-3">
         <ApiariesDropdown @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
       </div>
       <HivesTable ref="hives"/>
@@ -21,6 +21,8 @@ export default {
   components: {HivesTable, ApiariesDropdown},
   data: function () {
     return {
+      isView: Boolean(this.$route.query.isView),
+      isEdit: Boolean(this.$route.query.isEdit),
     }
   },
   methods: {

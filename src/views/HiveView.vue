@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
 
     <div class="col">
-      <ImageInput ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
+      <ImageInput v-if="" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
     </div>
 
     <div class="col">
@@ -39,6 +39,7 @@ export default {
   components: {ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
   data: function () {
     return {
+      hiveId: this.$route.query.hiveId,
       hiveRequest: {
         apiaryId: 0,
         typeId: 0,
@@ -49,6 +50,23 @@ export default {
     }
   },
   methods: {
+    getHive: function () {
+      this.$http.get("/apiary/hive", {
+            params: {
+              hiveId: this.hiveId
+            }
+          }
+      ).then(response => {
+        this.hiveRequest = response.data
+
+        this.$refs.hiveNameInput.setHiveName(this.hiveRequest.hiveName)
+        this.$refs.apiariesDropdown.setSelectedApiaryId(this.hiveRequest.apiaryId)
+        this.$refs.hiveSizeDropdown.setSelectedTypeId(this.hiveRequest.typeId)
+        this.$refs.hiveNotesInputBox.setHiveNote(this.hiveRequest.hiveNote)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
     navigateToApiaryView: function () {
       this.$router.push({name: 'apiaryRoute'})
     },
@@ -63,7 +81,7 @@ export default {
 
     postHive: function () {
       // todo uue hive-i lisamine korda teha ja lõpetada
-      this.$http.post("/apiary", this.hiveRequest
+      this.$http.post("/apiary/hive", this.hiveRequest
       ).then(response => {
         console.log(response.data)
       }).catch(error => {
@@ -85,6 +103,9 @@ export default {
     setHiveRequestTypeId: function (typeId) {
       this.hiveRequest.typeId = typeId
     }
+  },
+  beforeMount() {
+    this.getHive()
   }
 }
 </script>

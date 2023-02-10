@@ -15,6 +15,9 @@ export default {
   methods: {
     emitHiveNote: function () {
       this.$emit('emitHiveNoteEvent', this.hiveNote)
+    },
+    setHiveNote: function (hiveNote) {
+      this.hiveNote = hiveNote
     }
   }
 }

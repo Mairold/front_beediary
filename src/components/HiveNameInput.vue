@@ -17,6 +17,9 @@ export default {
   methods:{
     emitHiveName:function () {
       this.$emit('emitHiveNameEvent', this.hiveName)
+    },
+    setHiveName: function (hiveName) {
+      this.hiveName = hiveName
     }
   }
 }

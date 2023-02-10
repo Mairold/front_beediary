@@ -32,6 +32,9 @@ export default {
     },
     emitSelectedTypeId: function () {
       this.$emit('emitSelectedTypeIdEvent', this.selectedTypeId)
+    },
+    setSelectedTypeId: function (typeId) {
+      this.selectedTypeId = typeId
     }
   },
   beforeMount() {

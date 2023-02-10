@@ -38,6 +38,10 @@ export default {
     },
     emitSelectedApiaryId: function () {
       this.$emit('emitSelectedApiaryIdEvent',this.selectedApiaryId)
+    },
+    setSelectedApiaryId: function (apiaryId) {
+      this.selectedApiaryId = apiaryId
+
     }
   },
   beforeMount() {

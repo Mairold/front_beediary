@@ -1,27 +1,26 @@
 <template>
-
   <div class="row justify-content-center">
 
     <div class="col">
-      <ImageInput v-if="" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
+      <ImageInput ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
     </div>
 
     <div class="col">
       <HiveNameInput ref="hiveNameInput" @emitHiveNameEvent="setHiveRequestHiveName"/>
-      <HiveNotesInputBox ref="hiveNotesInputBox" @emitHiveNoteEvent="setHiveRequestHiveNote" />
+      <HiveNotesInputBox ref="hiveNotesInputBox" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
       <div>
-        <button  v-on:click="addHive"  type="button" class="btn btn-warning">Salvesta</button>
-      </div>
-      <div>
+        <button v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
         <button v-on:click="navigateToApiaryView" type="button" class="btn btn-warning">Tühista</button>
       </div>
     </div>
 
     <div class="col">
+      <div>
+      </div>
       <HiveSizeDropdown ref="hiveSizeDropdown" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
       <ApiariesDropdown ref="apiariesDropdown" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
       <div>
-        <button type="button" class="btn btn-warning">Lisa uus</button>
+        <button v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus</button>
       </div>
     </div>
   </div>
@@ -70,13 +69,16 @@ export default {
     navigateToApiaryView: function () {
       this.$router.push({name: 'apiaryRoute'})
     },
+    navigateToAddApiaryView: function () {
+      this.$router.push({name:'addApiaryRoute'})
+    },
     callAllHiveRequests: function () {
-     this.$refs.hiveNameInput.emitHiveName()
-     this.$refs.hiveNotesInputBox.emitHiveNote()
+      this.$refs.hiveNameInput.emitHiveName()
+      this.$refs.hiveNotesInputBox.emitHiveNote()
     },
     addHive: function () {
-    this.callAllHiveRequests()
-    this.postHive()
+      this.callAllHiveRequests()
+      this.postHive()
     },
 
     postHive: function () {

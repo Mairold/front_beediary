@@ -3,6 +3,8 @@
 
     <div class="col">
       <ImageInput ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
+      <img v-if="hiveRequest.hivePicture == null" src="../assets/beehive.png">
+      <img :src="hiveRequest.hivePicture" class="img-thumbnail">
     </div>
 
     <div class="col">

@@ -12,6 +12,8 @@
       </div>
       <div>
         <button v-on:click="addApiary" type="button" class="btn btn-warning">Lisa</button>
+        <button type="button" class="btn btn-warning">Tühista</button>
+        <!--        todo: v-on:click mis viib tagasi hiveView-sse-->
       </div>
     </div>
   </div>
@@ -24,9 +26,9 @@ export default {
     return {
       apiaryRequest: {
         userId: sessionStorage.getItem('userId'),
-        apiaryName:'',
-        latitude:'',
-        longitude:''
+        apiaryName: '',
+        latitude: '',
+        longitude: ''
       }
     }
   },
@@ -36,7 +38,6 @@ export default {
       this.setLatitude(this.apiaryRequest.latitude)
       this.setLongitude(this.apiaryRequest.longitude)
       this.postApiary()
-
     },
     postApiary: function () {
       this.$http.post("/apiary", this.apiaryRequest
@@ -54,7 +55,7 @@ export default {
     },
     setLongitude: function (longitude) {
       this.apiaryRequest.longitude = longitude
-    }
+    },
   }
 }
 </script>

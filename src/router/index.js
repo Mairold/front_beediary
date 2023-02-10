@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
 import ApiaryView from "@/views/ApiaryView.vue";
 import HiveView from "@/views/HiveView.vue";
+import ProfileView from "@/views/ProfileView.vue";
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routes = [
     path: '/hive',
     name: 'hiveRoute',
     component: HiveView
+  },
+  {
+    path: '/profile',
+    name: 'profileRoute',
+    component: ProfileView
   }
 ]
 

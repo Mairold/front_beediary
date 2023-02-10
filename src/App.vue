@@ -4,6 +4,7 @@
       <nav>
         <router-link to="/"></router-link>
         <router-link to="/login"></router-link>
+        <router-link to="/profile">Minu profiil</router-link> |
         <router-link to="/apiary">Minu mesilad</router-link>
         <router-link to="/hive"></router-link>
       </nav>

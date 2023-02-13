@@ -16,6 +16,10 @@
         </div>
         <button v-on:click="sendLoginRequest" type="button" class="btn btn-warning">Logi sisse</button>
       </div>
+      <br/>
+      <router-link to="/newuser">Registreeri kasutajaks</router-link>
+      <br/>
+      <router-link to="/">Unustasid parooli?</router-link>
     </div>
   </div>
 </template>

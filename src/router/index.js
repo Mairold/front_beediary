@@ -5,6 +5,8 @@ import LoginView from "@/views/LoginView.vue";
 import ApiaryView from "@/views/ApiaryView.vue";
 import HiveView from "@/views/HiveView.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import newUserView from "@/views/NewUserView.vue";
+import NewUserView from "@/views/NewUserView.vue";
 
 Vue.use(VueRouter)
 
@@ -32,6 +34,11 @@ const routes = [
     path: '/profile',
     name: 'profileRoute',
     component: ProfileView
+  },
+  {
+    path: '/newuser',
+    name: 'newUserRoute',
+    component: NewUserView
   }
 ]
 

@@ -68,6 +68,7 @@ export default {
         })
       } else {
         this.messageError = "Bzzz! Paroolid ei ühti"
+        this.timeoutAndReloadPage(2000)
       }
     },
 
@@ -86,6 +87,12 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+
+    timeoutAndReloadPage: function (timeOut) {
+      setTimeout(()=> {
+        this.$router.go(0)
+      }, timeOut)
     }
   }
 

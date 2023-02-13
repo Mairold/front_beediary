@@ -6,6 +6,7 @@ import ApiaryView from "@/views/ApiaryView.vue";
 import HiveView from "@/views/HiveView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import NewUserView from "@/views/NewUserView.vue";
+import AddApiaryView from "@/views/AddApiaryView.vue";
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ const routes = [
     path: '/new-user',
     name: 'newUserRoute',
     component: NewUserView
+  },
+  {
+    path: '/add-apiary',
+    name: 'addApiaryRoute',
+    component: AddApiaryView
   }
 ]
 

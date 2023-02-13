@@ -7,7 +7,7 @@
       <HivesTable ref="hives"/>
     </div>
     <div>
-      <button v-on:click="navigateToHiveView" type="button" class="btn btn-warning">Lisa uus taru</button>
+      <button v-on:click="navigateToAddHiveView" type="button" class="btn btn-warning">Lisa uus taru</button>
     </div>
   </div>
 </template>
@@ -19,16 +19,15 @@ import HivesTable from "@/components/HivesTable.vue";
 export default {
   name: "ApiaryView",
   components: {HivesTable, ApiariesDropdown},
-  data: function () {
-    return {
-    }
+  params: {
+    isAdd: Boolean
   },
   methods: {
     setSelectedApiaryId: function (apiaryId) {
       this.$refs.hives.getAllUserHives(apiaryId)
     },
-    navigateToHiveView: function () {
-      this.$router.push({name:'hiveRoute'})
+    navigateToAddHiveView: function () {
+      this.$router.push({name:'hiveRoute', query: {isAdd:'true'}})
     }
   }
 }

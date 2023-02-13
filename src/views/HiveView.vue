@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="row justify-content-center">
 
     <div class="col">
@@ -11,10 +12,10 @@
       <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
       <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
       <div>
-        <button v-if="!isView" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="!isView" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta muutus</button>
+        <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
+        <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
         <button v-if="!isView" v-on:click="navigateToApiaryView" type="button" class="btn btn-warning">Tühista</button>
-        <button v-if="isView" v-on:click="navigateToHiveView" type="button" class="btn btn-warning">Muuda</button>
+        <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
       </div>
     </div>
 
@@ -28,6 +29,7 @@
         </button>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -44,8 +46,11 @@ export default {
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),
-
+      isEdit: false,
+      isAdd: Boolean(this.$route.query.isAdd),
       hiveId: this.$route.query.hiveId,
+      messageError:'',
+      messageSuccess:'',
       hiveRequest: {
         apiaryId: 0,
         typeId: 0,
@@ -101,7 +106,12 @@ export default {
     },
     addHive: function () {
       this.callAllHiveRequestEmits()
-      this.postHive()
+
+      if (this.allRequiredFieldsAreFilled()) {
+        this.postHive();
+      } else {
+        this.messageError = 'Täida kõik kohustuslikud väljad!'
+      }
     },
 
     postHive: function () {
@@ -111,6 +121,11 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+    allRequiredFieldsAreFilled: function () {
+      return this.hiveRequest.apiaryId > 0 &&
+          this.hiveRequest.typeId > 0 &&
+          this.hiveRequest.hiveName !== ''
     },
     setHiveRequestPicture: function (pictureBase64Data) {
       this.hiveRequest.hivePicture = pictureBase64Data
@@ -127,7 +142,8 @@ export default {
     setHiveRequestTypeId: function (typeId) {
       this.hiveRequest.typeId = typeId
     },
-    navigateToHiveView: function () {
+    navigateToEditHiveView: function () {
+      this.isEdit = true
       this.isView = false
       this.$router.push({name: 'hiveRoute'})
     }

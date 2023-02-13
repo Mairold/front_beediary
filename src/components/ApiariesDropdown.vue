@@ -1,6 +1,6 @@
 <template>
   <div class="col-4">
-    <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" class="form-select">
+    <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" :disabled="isView" class="form-select">
       <option value="0">Mesilad</option>
       <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
     </select>
@@ -10,6 +10,9 @@
 <script>
 export default {
   name: 'ApiariesDropdown',
+  props:  {
+    isView: Boolean
+  },
   data: function () {
     return {
       userId: sessionStorage.getItem('userId'),

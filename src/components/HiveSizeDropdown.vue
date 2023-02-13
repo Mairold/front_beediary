@@ -1,6 +1,6 @@
 <template>
   <div class="col-4">
-    <select v-model="selectedTypeId" v-on:change="emitSelectedTypeId" class="form-select">
+    <select v-model="selectedTypeId" v-on:change="emitSelectedTypeId" :disabled="isView" class="form-select">
       <option value="0">Taru suurus</option>
       <option v-for="type in types" :value="type.typeId">{{ type.typeSize }}</option>
     </select>
@@ -9,6 +9,9 @@
 <script>
 export default {
   name: 'HiveSizeDropdown',
+  props: {
+    isView: Boolean
+  },
   data: function () {
     return {
       types: [

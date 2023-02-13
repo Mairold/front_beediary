@@ -2,27 +2,30 @@
   <div class="row justify-content-center">
 
     <div class="col">
-      <ImageInput ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
+      <ImageInput v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
       <img v-if="hiveRequest.hivePicture == null" src="../assets/beehive.png">
       <img :src="hiveRequest.hivePicture" class="img-thumbnail">
     </div>
 
     <div class="col">
-      <HiveNameInput ref="hiveNameInput" @emitHiveNameEvent="setHiveRequestHiveName"/>
-      <HiveNotesInputBox ref="hiveNotesInputBox" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
+      <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
+      <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
       <div>
-        <button v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-on:click="navigateToApiaryView" type="button" class="btn btn-warning">Tühista</button>
+        <button v-if="!isView" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
+        <button v-if="!isView" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta muutus</button>
+        <button v-if="!isView" v-on:click="navigateToApiaryView" type="button" class="btn btn-warning">Tühista</button>
+        <button v-if="isView" v-on:click="navigateToHiveView" type="button" class="btn btn-warning">Muuda</button>
       </div>
     </div>
 
     <div class="col">
       <div>
       </div>
-      <HiveSizeDropdown ref="hiveSizeDropdown" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
-      <ApiariesDropdown ref="apiariesDropdown" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
+      <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
+      <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
       <div>
-        <button v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus</button>
+        <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus
+        </button>
       </div>
     </div>
   </div>
@@ -40,6 +43,8 @@ export default {
   components: {ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
   data: function () {
     return {
+      isView: Boolean(this.$route.query.isView),
+
       hiveId: this.$route.query.hiveId,
       hiveRequest: {
         apiaryId: 0,
@@ -68,23 +73,38 @@ export default {
         console.log(error)
       })
     },
+    putHive: function () {
+      this.$http.put("/apiary/hive", this.hiveRequest, {
+            params: {
+              hiveId: this.hiveId
+            }
+          }
+      ).then(response => {
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    updateHive: function () {
+      this.callAllHiveRequestEmits();
+      this.putHive();
+    },
     navigateToApiaryView: function () {
       this.$router.push({name: 'apiaryRoute'})
     },
     navigateToAddApiaryView: function () {
-      this.$router.push({name:'addApiaryRoute'})
+      this.$router.push({name: 'addApiaryRoute'})
     },
-    callAllHiveRequests: function () {
+    callAllHiveRequestEmits: function () {
       this.$refs.hiveNameInput.emitHiveName()
       this.$refs.hiveNotesInputBox.emitHiveNote()
     },
     addHive: function () {
-      this.callAllHiveRequests()
+      this.callAllHiveRequestEmits()
       this.postHive()
     },
 
     postHive: function () {
-      // todo uue hive-i lisamine korda teha ja lõpetada
       this.$http.post("/apiary/hive", this.hiveRequest
       ).then(response => {
         console.log(response.data)
@@ -106,6 +126,10 @@ export default {
     },
     setHiveRequestTypeId: function (typeId) {
       this.hiveRequest.typeId = typeId
+    },
+    navigateToHiveView: function () {
+      this.isView = false
+      this.$router.push({name: 'hiveRoute'})
     }
   },
   beforeMount() {

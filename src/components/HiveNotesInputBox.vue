@@ -1,12 +1,15 @@
 <template>
   <div class="col-6 form-floating">
-    <textarea v-model="hiveNote" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+    <textarea v-model="hiveNote" :disabled="isView" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
     <label for="floatingTextarea2">Märkused</label>
   </div>
 </template>
 <script>
 export default {
   name: 'HiveNotesInputBox',
+  props: {
+    isView: Boolean
+  },
   data: function () {
     return {
       hiveNote:''

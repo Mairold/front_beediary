@@ -21,8 +21,6 @@ export default {
   components: {HivesTable, ApiariesDropdown},
   data: function () {
     return {
-      isView: Boolean(this.$route.query.isView),
-      isEdit: Boolean(this.$route.query.isEdit),
     }
   },
   methods: {

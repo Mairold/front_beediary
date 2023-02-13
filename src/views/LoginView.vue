@@ -1,27 +1,30 @@
 <template>
-  <div class="row justify-content-center ">
-    <div class=" row col-3">
-      <div>
-        <div class="mb-3 row">
-          <label class="col-sm-2 col-form-label">E-mail</label>
-          <div class="col-sm-10">
-            <input v-model="email" type="email" class="form-control">
+  <div>
+    <div class="row justify-content-center ">
+      <div class=" row col-3">
+        <div>
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">E-mail</label>
+            <div class="col-sm-10">
+              <input v-model="email" type="email" class="form-control">
+            </div>
           </div>
-        </div>
-        <div class="mb-3 row">
-          <label class="col-sm-2 col-form-label">Parool</label>
-          <div class="col-sm-10">
-            <input v-model="password" type="password" class="form-control">
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Parool</label>
+            <div class="col-sm-10">
+              <input v-model="password" type="password" class="form-control">
+            </div>
           </div>
+          <button v-on:click="sendLoginRequest" type="button" class="btn btn-warning">Logi sisse</button>
         </div>
-        <button v-on:click="sendLoginRequest" type="button" class="btn btn-warning">Logi sisse</button>
+        <br/>
+        <router-link :to="{name: 'newUserRoute'}">Registreeri kasutajaks</router-link>
+        <br/>
+        <router-link :to="{name: 'homeRoute'}">Unustasid parooli?</router-link>
       </div>
-      <br/>
-      <router-link :to="{name: 'newUserRoute'}">Registreeri kasutajaks</router-link>
-      <br/>
-      <router-link :to="{name: 'homeRoute'}">Unustasid parooli?</router-link>
     </div>
   </div>
+
 </template>
 
 <script>

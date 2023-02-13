@@ -27,7 +27,7 @@ export default {
       this.$refs.hives.getAllUserHives(apiaryId)
     },
     navigateToAddHiveView: function () {
-      this.$router.push({name:'hiveRoute', query: {isAdd:'true'}})
+      this.$router.push({name: 'hiveRoute', query: {isAdd: 'true'}})
     }
   }
 }

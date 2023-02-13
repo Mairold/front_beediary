@@ -1,6 +1,7 @@
 <template>
   <div>
-    <alert-danger> {{this.messageError}}</alert-danger>
+    <AlertDanger :message="messageError"/>
+    <AlertSuccess :message="messageSuccess"/>
   <div class="row justify-content-center">
 
     <div class="col">
@@ -19,7 +20,6 @@
         <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
       </div>
     </div>
-
     <div class="col">
       <div>
       </div>
@@ -41,10 +41,13 @@ import HiveNameInput from "@/components/HiveNameInput.vue";
 import HiveSizeDropdown from "@/components/HiveSizeDropdown.vue";
 import ImageInput from "@/components/ImageInput.vue";
 import AlertDanger from "@/components/AlertDanger.vue";
+import AlertSuccess from "@/components/AlertSuccess.vue";
 
 export default {
   name: "HiveView",
-  components: {AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
+  components: {
+    AlertSuccess,
+    AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),
@@ -94,7 +97,13 @@ export default {
     },
     updateHive: function () {
       this.callAllHiveRequestEmits();
-      this.putHive();
+      if (this.allRequiredFieldsAreFilled()) {
+        this.putHive();
+        this.messageSuccess = 'Taru andmed muudetud!'
+        this.navigateToApiaryView()
+      } else {
+        this.messageError = 'Täida kõik kohustuslikud väljad!'
+      }
     },
     navigateToApiaryView: function () {
       this.$router.push({name: 'apiaryRoute'})
@@ -111,6 +120,8 @@ export default {
 
       if (this.allRequiredFieldsAreFilled()) {
         this.postHive();
+        this.messageSuccess = this.hiveRequest.hiveName + ' lisatud!'
+        this.navigateToApiaryView()
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }

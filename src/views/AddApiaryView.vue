@@ -12,8 +12,7 @@
       </div>
       <div>
         <button v-on:click="addApiary" type="button" class="btn btn-warning">Lisa</button>
-        <button type="button" class="btn btn-warning">Tühista</button>
-        <!--        todo: v-on:click mis viib tagasi hiveView-sse-->
+        <button v-on:click="navigateToHiveView" type="button" class="btn btn-warning">Tühista</button>
       </div>
     </div>
   </div>
@@ -56,6 +55,9 @@ export default {
     setLongitude: function (longitude) {
       this.apiaryRequest.longitude = longitude
     },
+    navigateToHiveView: function () {
+      this.$router.push({name:'hiveRoute'})
+    }
   }
 }
 </script>

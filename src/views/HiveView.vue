@@ -1,5 +1,6 @@
 <template>
   <div>
+    <alert-danger> {{this.messageError}}</alert-danger>
   <div class="row justify-content-center">
 
     <div class="col">
@@ -39,10 +40,11 @@ import HiveNotesInputBox from "@/components/HiveNotesInputBox.vue";
 import HiveNameInput from "@/components/HiveNameInput.vue";
 import HiveSizeDropdown from "@/components/HiveSizeDropdown.vue";
 import ImageInput from "@/components/ImageInput.vue";
+import AlertDanger from "@/components/AlertDanger.vue";
 
 export default {
   name: "HiveView",
-  components: {ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
+  components: {AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),

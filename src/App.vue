@@ -4,7 +4,7 @@
       <nav>
         <router-link to="/profile">Minu profiil</router-link> |
         <router-link to="/apiary">Minu mesilad</router-link> |
-        <router-link v-if="isLoggedIn" to="/">Logi välja</router-link>
+        <router-link v-if="isLoggedIn" v-on:click="logout" to="/">Logi välja</router-link>
       </nav>
     </div>
     <router-view @emitLoginSuccessEvent = 'checkIfIsLoggedIn'/>
@@ -26,6 +26,10 @@ export default {
       } else {
         this.isLoggedIn = true
       }
+    },
+    logout: function () {
+      sessionStorage.clear()
+      this.isLoggedIn = false
     }
   },
   beforeMount() {

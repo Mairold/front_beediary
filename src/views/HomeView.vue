@@ -1,8 +1,10 @@
 <template>
   <div>
+    <br/>
     <h1>Tere tulemast!</h1>
-    <img alt="Bee logo" src="../assets/bee.gif">
+    <img alt="Bee logo" src="../assets/bee.gif" height="250">
     <div>
+      <br/>
       <button v-on:click="navigateToLogin" type="button" class="btn btn-warning">Logi sisse</button>
     </div>
   </div>

@@ -30,6 +30,13 @@
       </div>
     </div>
   </div>
+    <div class="row justify-content-center">
+
+      <div class="col-6">
+        <VisitTable/>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -39,10 +46,11 @@ import HiveNotesInputBox from "@/components/HiveNotesInputBox.vue";
 import HiveNameInput from "@/components/HiveNameInput.vue";
 import HiveSizeDropdown from "@/components/HiveSizeDropdown.vue";
 import ImageInput from "@/components/ImageInput.vue";
+import VisitTable from "@/components/VisitTable.vue";
 
 export default {
   name: "HiveView",
-  components: {ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
+  components: {VisitTable, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),

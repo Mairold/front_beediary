@@ -6,7 +6,7 @@
       <th scope="col">Tegevused</th>
       <th scope="col">Märkused</th>
       <th scope="col">Ülesanded</th>
-      <th scope="col"></th>
+      <th></th>
 
     </tr>
     </thead>
@@ -16,7 +16,7 @@
       <td v-for="doneTask in visit.doneTasks">{{doneTask.taskName}}</td>
       <td>{{ visit.visitNotes }}</td>
       <td v-for="toDotask in visit.toDoTasks">{{toDotask.taskName}}</td>
-      <td><font-awesome-icon icon="fa-solid fa-trash-can"/></td>
+      <th><font-awesome-icon icon="fa-solid fa-trash-can"/></th>
     </tr>
     </tbody>
   </table>

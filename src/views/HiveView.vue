@@ -20,6 +20,7 @@
         <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
       </div>
     </div>
+
     <div class="col">
       <div>
       </div>
@@ -31,6 +32,13 @@
       </div>
     </div>
   </div>
+    <div class="row justify-content-center">
+
+      <div class="col-6">
+        <VisitTable/>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -42,12 +50,13 @@ import HiveSizeDropdown from "@/components/HiveSizeDropdown.vue";
 import ImageInput from "@/components/ImageInput.vue";
 import AlertDanger from "@/components/AlertDanger.vue";
 import AlertSuccess from "@/components/AlertSuccess.vue";
+import VisitTable from "@/components/VisitTable.vue";
 
 export default {
   name: "HiveView",
   components: {
     AlertSuccess,
-    AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown},
+    AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown, VisitTable},
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),

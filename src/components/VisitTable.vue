@@ -1,44 +1,45 @@
 <template>
   <div>
 
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Kuupäev</th>
+        <th scope="col">Tegevused</th>
+        <th scope="col">Märkused</th>
+        <th scope="col">Ülesanded</th>
+        <th></th>
 
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col">Kuupäev</th>
-      <th scope="col">Tegevused</th>
-      <th scope="col">Märkused</th>
-      <th scope="col">Ülesanded</th>
-      <th></th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-for="visit in visits">
-      <td>{{ visit.visitDate }}</td>
-      <td>
-        <div v-for="doneTask in visit.doneTasks">
-          {{ doneTask.taskName }}
-        </div>
-      </td>
-      <td>
-        {{ visit.visitNotes }}
-      </td>
-      <td>
-        <div v-for="toDotask in visit.toDoTasks">
-          {{ toDotask.taskName }}
-        </div>
-      </td>
-      <th><font-awesome-icon v-on:click="deleteVisit(visit.visitId)" icon="fa-solid fa-trash-can" class="icon-hover"/></th>
-    </tr>
-    </tbody>
-  </table>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="visit in visits">
+        <td>{{ visit.visitDate }}</td>
+        <td>
+          <div v-for="doneTask in visit.doneTasks">
+            {{ doneTask.taskName }}
+          </div>
+        </td>
+        <td>
+          {{ visit.visitNotes }}
+        </td>
+        <td>
+          <div v-for="toDotask in visit.toDoTasks">
+            {{ toDotask.taskName }}
+          </div>
+        </td>
+        <th>
+          <font-awesome-icon v-on:click="deleteVisit(visit.visitId)" icon="fa-solid fa-trash-can" class="icon-hover"/>
+        </th>
+      </tr>
+      </tbody>
+    </table>
     <br>
     <div class="row col-2">
       <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-success">Lisa uus</button>
 
     </div>
-<br>
+    <br>
 
   </div>
 </template>
@@ -97,9 +98,8 @@ export default {
     },
 
     navigateToAddVisitView: function () {
-      this.$router.push({name:'addVisitRoute'})
+      this.$router.push({name: 'addVisitRoute'})
     }
-
   },
 
   beforeMount() {

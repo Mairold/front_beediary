@@ -1,0 +1,5 @@
+.icon-hover:hover {
+    color: yellow;
+    cursor: pointer;
+    height: 20px;
+}

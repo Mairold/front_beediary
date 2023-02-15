@@ -8,6 +8,7 @@ import ProfileView from "@/views/ProfileView.vue";
 import NewUserView from "@/views/NewUserView.vue";
 import AddApiaryView from "@/views/AddApiaryView.vue";
 import VisitView from "@/views/VisitView.vue";
+import AddVisitView from "@/views/AddVisitView.vue";
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,11 @@ const routes = [
     path: '/visit',
     name: 'visitRoute',
     component: VisitView
+  },
+  {
+    path: '/add-visit',
+    name: 'addVisitRoute',
+    component: AddVisitView
   }
 ]
 

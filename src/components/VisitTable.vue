@@ -1,4 +1,7 @@
 <template>
+  <div>
+
+
   <table class="table table-hover">
     <thead>
     <tr>
@@ -13,15 +16,34 @@
     <tbody>
     <tr v-for="visit in visits">
       <td>{{ visit.visitDate }}</td>
-      <td v-for="doneTask in visit.doneTasks">{{doneTask.taskName}}</td>
-      <td>{{ visit.visitNotes }}</td>
-      <td v-for="toDotask in visit.toDoTasks">{{toDotask.taskName}}</td>
-      <th><font-awesome-icon icon="fa-solid fa-trash-can"/></th>
+      <td>
+        <div v-for="doneTask in visit.doneTasks">
+          {{ doneTask.taskName }}
+        </div>
+      </td>
+      <td>
+        {{ visit.visitNotes }}
+      </td>
+      <td>
+        <div v-for="toDotask in visit.toDoTasks">
+          {{ toDotask.taskName }}
+        </div>
+      </td>
+      <th><font-awesome-icon v-on:click="deleteVisit(visit.visitId)" icon="fa-solid fa-trash-can" class="icon-hover"/></th>
     </tr>
     </tbody>
   </table>
+    <br>
+    <div class="row col-2">
+      <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-success">Lisa uus</button>
+
+    </div>
+<br>
+
+  </div>
 </template>
 <script>
+
 export default {
   name: 'VisitTable',
   data: function () {
@@ -61,7 +83,25 @@ export default {
       })
     },
 
+    deleteVisit: function (visitId) {
+      this.$http.delete("/hive/visits", {
+            params: {
+              visitId: visitId
+            }
+          }
+      ).then(response => {
+        this.getAllHiveVisits()
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    navigateToAddVisitView: function () {
+      this.$router.push({name:'addVisitRoute'})
+    }
+
   },
+
   beforeMount() {
     this.getAllHiveVisits()
   }

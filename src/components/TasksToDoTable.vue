@@ -11,20 +11,20 @@
         <th></th>
       </tr>
       </thead>
-      <tbody>
-      <tr v-for="visit in visits">
-        <td> {{visit.hiveName}}</td>
-        <td>{{visit.lastVisitDate}}</td>
-        <td>
-          <div v-for="toDoTask in visit.toDoTasks">
-            {{toDoTask.taskName}}
-          </div>
-        </td>
-        <td>{{visit.apiaryName}}</td>
-        <th>
-          <font-awesome-icon icon="fa-solid fa-check"/>
-        </th>
+      <tbody v-for="visit in visits" >
+      <tr v-for="toDoTask in visit.toDoTasks">
+
+            <td> {{ visit.hiveName }}</td>
+            <td>{{ visit.lastVisitDate }}</td>
+            <td>
+                {{ toDoTask.taskName }}
+            </td>
+            <td>{{ visit.apiaryName }}</td>
+            <th>
+              <font-awesome-icon v-on:click="deleteToDoTask(visit.visitId, toDoTask.taskId)" icon="fa-solid fa-check"/>
+            </th>
       </tr>
+
       </tbody>
     </table>
   </div>
@@ -45,6 +45,7 @@ export default {
           lastVisitDate: '',
           toDoTasks: [
             {
+              taskId: 0,
               taskName: ''
             }
           ]
@@ -66,6 +67,19 @@ export default {
         console.log(error)
       })
     },
+    deleteToDoTask: function (visitId, taskId) {
+      this.$http.delete("/tasks", {
+            params: {
+              visitId: visitId,
+              taskId: taskId
+            }
+          }
+      ).then(response => {
+        this.getVisitTasks(0)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
   },
   beforeMount() {
     this.getVisitTasks(0)

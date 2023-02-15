@@ -10,15 +10,8 @@
 
       <div class="col-4">
         <h6>Tehtud tegevused</h6>
-
-
-
       </div>
-
     </div>
-
-
-
   </div>
 </template>
 

@@ -60,6 +60,7 @@
 <script>
 import HiveNotesInputBox from "@/components/HiveNotesInputBox.vue";
 import AlertSuccess from "@/components/AlertSuccess.vue";
+import router from "@/router";
 
 export default {
   name: "AddVisitView",
@@ -86,7 +87,7 @@ export default {
   },
   methods: {
     navigateBack: function () {
-      this.$router.push({name: 'hiveRoute', query: {hiveId: this.hiveId}})
+      router.go(-1)
     },
 
     getTaskNames: function () {
@@ -102,6 +103,9 @@ export default {
       this.$http.post("/hive/visits", this.visit
       ).then(response => {
         this.messageSuccess = "Uus külastus lisatud!"
+        setTimeout(() => {
+          this.navigateBack()
+        }, 2000)
       }).catch(error => {
         console.log(error)
       })

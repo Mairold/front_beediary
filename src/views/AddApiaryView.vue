@@ -22,6 +22,8 @@
 
 <script>
 
+import router from "@/router";
+
 export default {
   name: "AddApiaryView",
   data: function () {
@@ -66,7 +68,7 @@ export default {
       this.apiaryRequest.longitude = longitude
     },
     navigateToEditHiveView: function () {
-      this.$router.push({name: 'hiveRoute'})
+      router.go(-2)
     }
   }
 }

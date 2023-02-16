@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 export default {
   name: "HomeView",
   methods: {
@@ -22,6 +23,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
 
 </style>

@@ -28,10 +28,19 @@
         <input v-model="userProfile.dateOfBirth" id="startDate" class="form-control" type="date"/><br/>
         <div>
           <button v-on:click="updateUserProfile" type="button" class="btn btn-outline-secondary">Salvesta</button>
-        </div><br/>
+        </div>
+        <br/>
+        <div class="input-group mb-3">
+          <input v-model="userPasswordDto.password
+" type="password" class="form-control" placeholder="Parool">
+        </div>
+        <div class="input-group mb-3">
+          <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
+        </div>
         <div>
-          <button type="button" class="btn btn-outline-secondary">Muuda parooli</button>
-        </div><br/>
+          <button v-on:click="changePassword" type="button" class="btn btn-outline-secondary">Muuda parooli</button>
+        </div>
+        <br/>
         <div>
           <button v-on:click="navigateBack" type="button" class="btn btn-outline-secondary">Tühista</button>
         </div>
@@ -57,6 +66,11 @@ export default {
     return {
       messageSuccess: '',
       messageDanger: '',
+      userPasswordDto:
+          {
+            password: ''
+          },
+      passwordCheck:'',
       userProfile:
           {
             userId: sessionStorage.getItem("userId"),
@@ -96,22 +110,34 @@ export default {
           }
       ).then(response => {
         this.messageSuccess = "Andmed edukalt uuendatud"
-        this.timeoutAndReloadPage(2000)
+        this.$parent.timeoutAndReloadPage(2000)
       }).catch(error => {
         console.log(error)
       })
     },
 
-    timeoutAndReloadPage: function (timeOut) {
-      setTimeout(() => {
-        this.$router.go(0)
-      }, timeOut)
+    changePassword: function () {
+      if(this.userPasswordDto.password === this.passwordCheck) {
+        this.$http.patch("/profile", this.userPasswordDto, {
+              params: {
+                userId: sessionStorage.getItem("userId"),
+              }
+            }
+        ).then(response => {
+          this.messageSuccess = "Parool edukalt uuendatud"
+          this.$parent.timeoutAndReloadPage(2000)
+          console.log(response.data)
+        }).catch(error => {
+          console.log(error)
+        })
+      } else {
+        this.messageDanger = "Bzzz! Paroolid ei ühti"
+        this.$parent.timeoutAndReloadPage(2000)
+      }
     },
-
     setUserProfilePicture: function (pictureBase64Data) {
       this.userProfile.picture = pictureBase64Data
     }
-
   },
   beforeMount() {
     this.getUserProfile()

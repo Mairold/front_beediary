@@ -34,6 +34,12 @@ export default {
     logout: function () {
       sessionStorage.clear()
       this.isLoggedIn = false
+    },
+
+    timeoutAndReloadPage: function (timeOut) {
+      setTimeout(() => {
+        this.$router.go(0)
+      }, timeOut)
     }
   },
   beforeMount() {

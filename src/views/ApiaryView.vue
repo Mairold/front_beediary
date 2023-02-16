@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="row justify-content-center">
-      <div class="col-3">
-        <ApiariesDropdown @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
+    <div class="row">
+      <div>
+        <div class="col-3">
+          <ApiariesDropdown @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
+        </div>
+        <HivesTable ref="hives"/>
       </div>
-      <HivesTable ref="hives"/>
     </div>
     <div>
       <button v-on:click="navigateToAddHiveView" type="button" class="btn btn-warning">Lisa uus taru</button>

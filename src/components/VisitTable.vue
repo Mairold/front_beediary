@@ -36,7 +36,7 @@
     </table>
     <br>
     <div class="row col-2">
-      <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-success">Lisa uus</button>
+      <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-warning">Lisa uus</button>
 
     </div>
     <br>

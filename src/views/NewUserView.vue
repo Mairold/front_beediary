@@ -18,10 +18,10 @@
         <div class="input-group mb-3">
           <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
         </div>
-        <button v-on:click="createNewUser" type="button" class="btn btn-outline-primary">Loo kasutaja</button>
+        <button v-on:click="createNewUser" type="button" class="btn btn-warning">Loo kasutaja</button>
         <div>
           <br/>
-          <button v-on:click="navigateBack" type="button" class="btn btn-outline-primary">Tühista</button>
+          <button v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
         </div>
 
       </div>

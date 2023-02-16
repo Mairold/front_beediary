@@ -37,7 +37,7 @@
     <div class="row justify-content-center">
 
       <div class="col-6">
-        <VisitTable/>
+        <VisitTable v-if="isView"/>
       </div>
 
     </div>

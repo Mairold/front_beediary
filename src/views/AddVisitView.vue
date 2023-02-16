@@ -18,22 +18,8 @@
         <input v-model="visit.date" class="form-control" type="date"/>
         <br>
 
-        <h6>Tehtud tegevused</h6>
-        <div v-for="task in visit.tasks" class="form-check">
-          <input v-model="task.done" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1">
-            {{ task.taskName }}
-          </label>
-        </div>
+        <TasksCheckbox :visit="visit"/>
 
-        <br>
-        <h6>Ülesanded</h6>
-        <div v-for="task in visit.tasks" class="form-check">
-          <input v-model="task.toDo" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1">
-            {{ task.taskName }}
-          </label>
-        </div>
         <br>
         <div>
           <button v-on:click="postVisit" type="button" class="btn btn-warning">Lisa külastus</button>
@@ -58,13 +44,13 @@
 </template>
 
 <script>
-import HiveNotesInputBox from "@/components/HiveNotesInputBox.vue";
 import AlertSuccess from "@/components/AlertSuccess.vue";
 import router from "@/router";
+import TasksCheckbox from "@/views/TasksCheckbox.vue";
 
 export default {
   name: "AddVisitView",
-  components: {AlertSuccess, HiveNotesInputBox},
+  components: {TasksCheckbox, AlertSuccess},
   data: function () {
     return {
       messageSuccess: '',
@@ -82,22 +68,11 @@ export default {
               }
             ]
           },
-
     }
   },
   methods: {
     navigateBack: function () {
       router.go(-1)
-    },
-
-    getTaskNames: function () {
-      this.$http.get("/visit/tasks")
-          .then(response => {
-            this.visit.tasks = response.data
-          })
-          .catch(error => {
-            console.log(error)
-          })
     },
     postVisit: function () {
       this.$http.post("/hive/visits", this.visit
@@ -110,14 +85,9 @@ export default {
         console.log(error)
       })
     },
-
-
-  },
-
-  beforeMount() {
-    this.getTaskNames()
   }
 }
+
 </script>
 
 

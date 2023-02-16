@@ -98,7 +98,9 @@ export default {
     },
 
     navigateToAddVisitView: function () {
-      this.$router.push({name: 'addVisitRoute'})
+      this.$router.push({name: 'addVisitRoute', query: {hiveId: this.hiveId}})
+
+
     }
   },
 

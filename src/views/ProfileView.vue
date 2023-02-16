@@ -31,7 +31,8 @@
         </div>
         <br/>
         <div class="input-group mb-3">
-          <input v-model="userPasswordDto.password" type="password" class="form-control" placeholder="Parool">
+          <input v-model="userPasswordDto.password
+" type="password" class="form-control" placeholder="Parool">
         </div>
         <div class="input-group mb-3">
           <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">

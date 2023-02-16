@@ -1,5 +1,7 @@
 <template>
   <div>
+    <br/>
+    <h3>Logi sisse</h3>
     <div class="row justify-content-center ">
       <div class=" row col-3">
         <div>
@@ -15,16 +17,17 @@
               <input v-model="password" type="password" class="form-control">
             </div>
           </div>
+          <br/>
           <button v-on:click="sendLoginRequest" type="button" class="btn btn-warning">Logi sisse</button>
         </div>
-        <br/>
-        <router-link :to="{name: 'newUserRoute'}">Registreeri kasutajaks</router-link>
-        <br/>
+        <div>
+          <br/>
+          <router-link :to="{name: 'newUserRoute'}">Registreeri kasutajaks</router-link>
+        </div>
         <router-link :to="{name: 'homeRoute'}">Unustasid parooli?</router-link>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>

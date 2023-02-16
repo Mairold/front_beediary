@@ -27,7 +27,7 @@
         <label>Sünnikuupäev</label>
         <input v-model="userProfile.dateOfBirth" id="startDate" class="form-control" type="date"/><br/>
         <div>
-          <button v-on:click="updateUserProfile" type="button" class="btn btn-outline-secondary">Salvesta</button>
+          <button v-on:click="updateUserProfile" type="button" class="btn btn-warning">Salvesta</button>
         </div>
         <br/>
         <div class="input-group mb-3">
@@ -37,11 +37,11 @@
           <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
         </div>
         <div>
-          <button v-on:click="changePassword" type="button" class="btn btn-outline-secondary">Muuda parooli</button>
+          <button v-on:click="changePassword" type="button" class="btn btn-warning">Muuda parooli</button>
         </div>
         <br/>
         <div>
-          <button v-on:click="navigateBack" type="button" class="btn btn-outline-secondary">Tühista</button>
+          <button v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
         </div>
       </div>
       <div class="col-3">

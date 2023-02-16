@@ -21,7 +21,7 @@
             </td>
             <td>{{ visit.apiaryName }}</td>
             <th>
-              <font-awesome-icon v-on:click="deleteToDoTask(visit.visitId, toDoTask.taskId)" icon="fa-solid fa-check"/>
+              <font-awesome-icon v-on:click="deleteToDoTask(visit.visitId, toDoTask.taskId)" class="icon-hover" icon="fa-solid fa-check"/>
             </th>
       </tr>
 

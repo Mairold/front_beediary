@@ -21,7 +21,7 @@
         <td>{{ hive.lastVisitDate }}</td>
         <td>{{ hive.typeSize }}</td>
         <td>{{ hive.apiaryName }}</td>
-        <th><font-awesome-icon v-on:click="deleteHive(hive.hiveId)" icon="fa-solid fa-trash-can"/></th>
+        <th><font-awesome-icon v-on:click="deleteHive(hive.hiveId)" class="icon-hover" icon="fa-solid fa-trash-can"/></th>
       </tr>
       </tbody>
     </table>

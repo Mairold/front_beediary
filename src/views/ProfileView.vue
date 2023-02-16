@@ -31,8 +31,7 @@
         </div>
         <br/>
         <div class="input-group mb-3">
-          <input v-model="userPasswordDto.password
-" type="password" class="form-control" placeholder="Parool">
+          <input v-model="userPasswordDto.password" type="password" class="form-control" placeholder="Parool">
         </div>
         <div class="input-group mb-3">
           <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
@@ -70,7 +69,7 @@ export default {
           {
             password: ''
           },
-      passwordCheck:'',
+      passwordCheck: '',
       userProfile:
           {
             userId: sessionStorage.getItem("userId"),
@@ -117,13 +116,14 @@ export default {
     },
 
     changePassword: function () {
-      if(this.userPasswordDto.password === this.passwordCheck) {
+      if (this.userPasswordDto.password === this.passwordCheck) {
         this.$http.patch("/profile", this.userPasswordDto, {
               params: {
                 userId: sessionStorage.getItem("userId"),
               }
             }
         ).then(response => {
+
           this.messageSuccess = "Parool edukalt uuendatud"
           this.$parent.timeoutAndReloadPage(2000)
           console.log(response.data)

@@ -4,6 +4,7 @@
 
     <div class="row justify-content-center">
       <AlertDanger :message="messageError"/>
+      <AlertSuccess :message="messageSuccess"/>
       <div class="col-3">
 
         <br/>
@@ -31,10 +32,11 @@
 
 <script>
 import AlertDanger from "@/components/AlertDanger.vue";
+import AlertSuccess from "@/components/AlertSuccess.vue";
 
 export default {
   name: "NewUserView",
-  components: {AlertDanger},
+  components: {AlertSuccess, AlertDanger},
   data: function () {
     return {
       user: {
@@ -46,13 +48,13 @@ export default {
         userId: 0
       },
       messageError: '',
+      messageSuccess: ''
     }
   },
   methods: {
     navigateBack: function () {
       this.$router.push({name: 'homeRoute'})
     },
-
     createNewUser: function () {
       if (this.user.password === this.passwordCheck) {
         this.$http.post("/newuser", this.user, {
@@ -62,13 +64,14 @@ export default {
               }
             }
         ).then(response => {
+          this.messageSuccess = "Uus kasutaja registreeritud!"
           this.sendLoginRequest()
         }).catch(error => {
           console.log(error)
         })
       } else {
         this.messageError = "Bzzz! Paroolid ei ühti"
-        this.timeoutAndReloadPage(2000)
+        this.$parent.timeoutAndReloadPage(2000)
       }
     },
 
@@ -87,12 +90,6 @@ export default {
       }).catch(error => {
         console.log(error)
       })
-    },
-
-    timeoutAndReloadPage: function (timeOut) {
-      setTimeout(()=> {
-        this.$router.go(0)
-      }, timeOut)
     }
   }
 

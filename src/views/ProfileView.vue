@@ -110,7 +110,7 @@ export default {
           }
       ).then(response => {
         this.messageSuccess = "Andmed edukalt uuendatud"
-        this.timeoutAndReloadPage(2000)
+        this.$parent.timeoutAndReloadPage(2000)
       }).catch(error => {
         console.log(error)
       })
@@ -125,23 +125,16 @@ export default {
             }
         ).then(response => {
           this.messageSuccess = "Parool edukalt uuendatud"
-          this.timeoutAndReloadPage(2000)
+          this.$parent.timeoutAndReloadPage(2000)
           console.log(response.data)
         }).catch(error => {
           console.log(error)
         })
       } else {
         this.messageDanger = "Bzzz! Paroolid ei ühti"
-        this.timeoutAndReloadPage(2000)
+        this.$parent.timeoutAndReloadPage(2000)
       }
     },
-
-    timeoutAndReloadPage: function (timeOut) {
-      setTimeout(() => {
-        this.$router.go(0)
-      }, timeOut)
-    },
-
     setUserProfilePicture: function (pictureBase64Data) {
       this.userProfile.picture = pictureBase64Data
     }

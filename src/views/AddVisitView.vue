@@ -1,13 +1,19 @@
 <template>
   <div>
+    <div class="row justify-content-center">
+      <div class="col-5"></div>
+      <div class="col-2">
+        <AlertSuccess :message="messageSuccess"/>
+      </div>
+      <div class="col-5"></div>
+    </div>
     <!--    ROW 1-->
     <div class="row justify-content-center">
-
       <!--      COL 1 -->
       <div class="col-2"></div>
-
       <!--      COL 2 -->
       <div class="col-2">
+
         <label>Külastuse kuupäev</label>
         <input v-model="visit.date" class="form-control" type="date"/>
         <br>
@@ -53,13 +59,14 @@
 
 <script>
 import HiveNotesInputBox from "@/components/HiveNotesInputBox.vue";
+import AlertSuccess from "@/components/AlertSuccess.vue";
 
 export default {
   name: "AddVisitView",
-  components: {HiveNotesInputBox},
+  components: {AlertSuccess, HiveNotesInputBox},
   data: function () {
     return {
-
+      messageSuccess: '',
       visit:
           {
             date: '',
@@ -94,7 +101,7 @@ export default {
     postVisit: function () {
       this.$http.post("/hive/visits", this.visit
       ).then(response => {
-        console.log(response.data)
+        this.messageSuccess = "Uus külastus lisatud!"
       }).catch(error => {
         console.log(error)
       })
@@ -110,4 +117,3 @@ export default {
 </script>
 
 
-</style>

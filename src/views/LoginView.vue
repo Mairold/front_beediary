@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AlertDanger :message="messageError"/>
     <br/>
     <h3>Logi sisse</h3>
     <div class="row justify-content-center ">
@@ -31,10 +32,14 @@
 </template>
 
 <script>
+import AlertDanger from "@/components/AlertDanger.vue";
+
 export default {
   name: "LoginView",
+  components: {AlertDanger},
   data: function () {
     return {
+      messageError: '',
       loginResponse: {
         userId: 0
       },
@@ -54,10 +59,10 @@ export default {
         sessionStorage.setItem('userId', this.loginResponse.userId)
         this.$emit('emitLoginSuccessEvent')
         this.$router.push({name: 'apiaryRoute'})
+      }).catch(error => {
+        this.messageError = "Vale parool!"
+        this.$parent.timeoutAndReloadPage(2000)
       })
-          .catch(error => {
-            console.log(error)
-          })
     },
   }
 }

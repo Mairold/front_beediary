@@ -16,7 +16,7 @@
       <div>
         <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
         <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="!isView" v-on:click="navigateToApiaryView" type="button" class="btn btn-warning">Tühista</button>
+        <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
         <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
       </div>
     </div>
@@ -26,7 +26,9 @@
       </div>
       <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
       <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
+      <font-awesome-icon icon="fa-solid fa-circle-plus" />
       <div>
+
         <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus
         </button>
       </div>
@@ -51,12 +53,12 @@ import ImageInput from "@/components/ImageInput.vue";
 import AlertDanger from "@/components/AlertDanger.vue";
 import AlertSuccess from "@/components/AlertSuccess.vue";
 import VisitTable from "@/components/VisitTable.vue";
+import router from "@/router";
 
 export default {
   name: "HiveView",
   components: {
-    AlertSuccess,
-    AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown, VisitTable},
+    AlertSuccess, AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown, VisitTable},
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),
@@ -109,13 +111,15 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.putHive();
         this.messageSuccess = 'Taru andmed muudetud!'
-        this.navigateToApiaryView()
+        this.navigateBack()
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }
     },
-    navigateToApiaryView: function () {
-      this.$router.push({name: 'apiaryRoute'})
+    navigateBack: function () {
+      router.go(-1)
+      this.isView = true
+      this.isEdit = false
     },
     navigateToAddApiaryView: function () {
       this.$router.push({name: 'addApiaryRoute'})
@@ -130,7 +134,7 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.postHive();
         this.messageSuccess = this.hiveRequest.hiveName + ' lisatud!'
-        this.navigateToApiaryView()
+        this.navigateBack()
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }

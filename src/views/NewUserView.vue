@@ -65,9 +65,12 @@ export default {
             }
         ).then(response => {
           this.messageSuccess = "Uus kasutaja registreeritud!"
-          this.sendLoginRequest()
+          setTimeout(() => { this.sendLoginRequest()
+          }, 2000)
+
         }).catch(error => {
-          console.log(error)
+          this.messageError = "Kasutaja juba eksisteerib"
+          this.$parent.timeoutAndReloadPage(2000)
         })
       } else {
         this.messageError = "Bzzz! Paroolid ei ühti"

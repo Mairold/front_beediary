@@ -27,7 +27,7 @@
 
         <br>
         <div>
-          <button v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
+          <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
         </div>
 
       </div>

@@ -16,7 +16,7 @@
       <div>
         <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
         <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
+        <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
         <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
       </div>
     </div>
@@ -25,12 +25,13 @@
       <div>
       </div>
       <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
+      <div class="row">
       <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
-      <font-awesome-icon icon="fa-solid fa-circle-plus" />
-      <div>
+      </div>
 
-        <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus
-        </button>
+      <div>
+        <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus</button>
+
       </div>
     </div>
   </div>

@@ -21,7 +21,7 @@
         <button v-on:click="createNewUser" type="button" class="btn btn-warning">Loo kasutaja</button>
         <div>
           <br/>
-          <button v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
+          <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
         </div>
 
       </div>

@@ -1,15 +1,18 @@
 <template>
   <div>
-    <div class="row justify-content-center">
-      <div class="col-3">
-        <ApiariesDropdown @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
+    <div class="row" style="padding-left: 125px">
+
+        <ApiariesDropdown class="col-2" @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
+    </div>
+      <div class="row justify-content-center">
+        <HivesTable style="align-content: center" class="col-6" ref="hives"/>
+
+      <div>
+        <button v-on:click="navigateToAddHiveView" type="button" class="btn btn-warning">Lisa uus taru</button>
       </div>
-      <HivesTable ref="hives"/>
     </div>
-    <div>
-      <button v-on:click="navigateToAddHiveView" type="button" class="btn btn-warning">Lisa uus taru</button>
-    </div>
-    </div>
+  </div>
+
 </template>
 
 <script>

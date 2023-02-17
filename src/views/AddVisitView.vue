@@ -1,12 +1,10 @@
 <template>
   <div>
     <div class="row justify-content-center">
-      <div class="col-5"></div>
-      <div class="col-2">
-        <AlertSuccess :message="messageSuccess"/>
-      </div>
-      <div class="col-5"></div>
+      <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
+      <AlertDanger style="align-content: center" class="col-4" :message="messageDanger"/>
     </div>
+
     <!--    ROW 1-->
     <div class="row justify-content-center">
       <!--      COL 1 -->
@@ -22,7 +20,7 @@
 
         <br>
         <div>
-          <button v-on:click="postVisit" type="button" class="btn btn-warning">Lisa külastus</button>
+          <button v-on:click="addNewVisit" type="button" class="btn btn-warning">Lisa külastus</button>
         </div>
 
         <br>
@@ -46,14 +44,16 @@
 <script>
 import AlertSuccess from "@/components/AlertSuccess.vue";
 import router from "@/router";
-import TasksCheckbox from "@/views/TasksCheckbox.vue";
+import TasksCheckbox from "@/components/TasksCheckbox.vue";
+import AlertDanger from "@/components/AlertDanger.vue";
 
 export default {
   name: "AddVisitView",
-  components: {TasksCheckbox, AlertSuccess},
+  components: {AlertDanger, TasksCheckbox, AlertSuccess},
   data: function () {
     return {
       messageSuccess: '',
+      messageDanger: '',
       visit:
           {
             date: '',
@@ -74,6 +74,19 @@ export default {
     navigateBack: function () {
       router.go(-1)
     },
+
+    addNewVisit: function () {
+      if (this.allRequiredFieldsAreFilled(true)) {
+        this.postVisit()
+      } else {
+        this.messageDanger = "Palun lisa kuupäev ja vali tehtud tegevused!"
+        setTimeout(() => {
+          this.messageDanger = ''
+        }, 2000)
+      }
+
+    },
+
     postVisit: function () {
       this.$http.post("/hive/visits", this.visit
       ).then(response => {
@@ -84,6 +97,11 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+
+    allRequiredFieldsAreFilled: function () {
+      return this.visit.date !== '' &&
+          this.visit.tasks.some(task => task.done)
     },
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="col-6">
-    <table class="table">
+    <table class="table bg-warning bg-opacity-25">
       <thead>
       <tr>
         <th scope="col">Taru nimi</th>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="message != ''" class="alert alert-danger" role="alert">
+  <div v-if="message != ''" class="alert alert-bee" role="alert">
     {{message}}
   </div>
 </template>

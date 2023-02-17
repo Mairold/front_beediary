@@ -1,12 +1,15 @@
 <template>
   <div>
+    <div class="row" style="padding-left: 125px">
+      <ApiariesDropdown class="col-2" @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
+    </div>
     <div class="row justify-content-center">
-    <div class="col-3">
-      <ApiariesDropdown/>
+
+      <TasksToDoTable style="align-content: center" class="col-6" ref="tasks"/>
     </div>
-    <TasksToDoTable/>
+
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -18,6 +21,11 @@ export default {
   components: {TasksToDoTable, ApiariesDropdown},
   data: function () {
     return {}
+  },
+  methods: {
+    setSelectedApiaryId: function (apiaryId) {
+      this.$refs.tasks.getVisitTasks(apiaryId)
+    }
   }
 }
 </script>

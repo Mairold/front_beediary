@@ -40,7 +40,8 @@ export default {
       setTimeout(() => {
         this.$router.go(0)
       }, timeOut)
-    }
+    },
+
   },
   beforeMount() {
     this.checkIfIsLoggedIn()

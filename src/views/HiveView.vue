@@ -1,39 +1,44 @@
 <template>
   <div>
-    <AlertDanger :message="messageError"/>
-    <AlertSuccess :message="messageSuccess"/>
-  <div class="row justify-content-center">
 
-    <div class="col">
-      <ImageInput v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
-      <img v-if="hiveRequest.hivePicture == null" src="../assets/beehive.png">
-      <img :src="hiveRequest.hivePicture" class="img-thumbnail">
-    </div>
+    <div class="row justify-content-center">
 
-    <div class="col">
-      <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
-      <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
-      <div>
-        <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
-        <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
+        <AlertDanger style="align-content: center" class="col-3" :message="messageError"/>
+        <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
+
+      </div>
+
+      <div class="row justify-content-center">
+      <div class="col">
+        <ImageInput v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
+        <img v-if="hiveRequest.hivePicture == null" src="../assets/beehive.png">
+        <img :src="hiveRequest.hivePicture" class="img-thumbnail">
+      </div>
+
+      <div class="col">
+        <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
+        <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
+        <div>
+          <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
+          <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
+          <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-warning">Tühista</button>
+          <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+        </div>
+        <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
+        <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
+        <font-awesome-icon icon="fa-solid fa-circle-plus"/>
+        <div>
+
+          <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus
+          </button>
+        </div>
       </div>
     </div>
-
-    <div class="col">
-      <div>
-      </div>
-      <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
-      <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
-      <font-awesome-icon icon="fa-solid fa-circle-plus" />
-      <div>
-
-        <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus
-        </button>
-      </div>
-    </div>
-  </div>
     <div class="row justify-content-center">
 
       <div class="col-6">
@@ -58,15 +63,23 @@ import router from "@/router";
 export default {
   name: "HiveView",
   components: {
-    AlertSuccess, AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown, VisitTable},
+    AlertSuccess,
+    AlertDanger,
+    ImageInput,
+    HiveSizeDropdown,
+    HiveNameInput,
+    HiveNotesInputBox,
+    ApiariesDropdown,
+    VisitTable
+  },
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),
       isEdit: false,
       isAdd: Boolean(this.$route.query.isAdd),
       hiveId: this.$route.query.hiveId,
-      messageError:'',
-      messageSuccess:'',
+      messageError: '',
+      messageSuccess: '',
       hiveRequest: {
         apiaryId: 0,
         typeId: 0,
@@ -111,9 +124,15 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.putHive();
         this.messageSuccess = 'Taru andmed muudetud!'
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
         this.navigateBack()
       } else {
-        this.messageError = 'Täida kõik kohustuslikud väljad!'
+        this.messageError = 'Palun täida kõik kohustuslikud väljad!'
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
       }
     },
     navigateBack: function () {
@@ -134,10 +153,21 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.postHive();
         this.messageSuccess = this.hiveRequest.hiveName + ' lisatud!'
-        this.navigateBack()
+        setTimeout(() => {
+          this.navigateBack()
+        }, 2000)
       } else {
-        this.messageError = 'Täida kõik kohustuslikud väljad!'
+        this.messageError = 'Palun täida kõik kohustuslikud väljad!'
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
+
       }
+    },
+
+    messageReset: function () {
+      this.messageError = ''
+      this.messageSuccess = ''
     },
 
     postHive: function () {

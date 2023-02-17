@@ -4,6 +4,12 @@
     height: 20px;
 }
 
+.alert-bee {
+    --bs-alert-color: #9b7002;
+    --bs-alert-bg: #f1eac5;
+    --bs-alert-border-color: #ecdda2;
+}
+
 body {
 
 }

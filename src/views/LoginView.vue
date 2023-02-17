@@ -1,21 +1,20 @@
 <template>
   <div>
-    <AlertDanger :message="messageError"/>
     <br/>
     <h3>Logi sisse</h3>
-    <div class="row justify-content-center ">
-      <div class=" row col-3">
+    <br>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <AlertDanger :message="messageError"/>
         <div>
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">E-mail</label>
+          <div class="mb-2 row justify-content-center">
             <div class="col-sm-10">
-              <input v-model="email" type="email" class="form-control">
+              <input v-model="email" type="email" class="form-control" placeholder="E-mail">
             </div>
           </div>
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Parool</label>
+          <div class="mb-2 row justify-content-center">
             <div class="col-sm-10">
-              <input v-model="password" type="password" class="form-control">
+              <input v-model="password" type="password" class="form-control" placeholder="Parool">
             </div>
           </div>
           <br/>
@@ -60,8 +59,8 @@ export default {
         this.$emit('emitLoginSuccessEvent')
         this.$router.push({name: 'apiaryRoute'})
       }).catch(error => {
-        this.messageError = "Vale parool!"
-        this.$parent.timeoutAndReloadPage(2000)
+        this.messageError = "Vale kasutajanimi või parool!"
+        this.$parent.timeoutAndReloadPage(2500)
       })
     },
   }

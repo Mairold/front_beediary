@@ -1,10 +1,12 @@
 <template>
   <div>
     <br/>
-    <h1>Tere tulemast!</h1>
+    <h3>Tere tulemast!</h3>
     <img alt="Bee logo" src="../assets/bee.gif" height="250">
     <div>
-      <br/>
+      <br>
+      <h6>Digiajastu mesinduspäevik hoiab kõik sinu mesilate ja tarude info ühes kohas.</h6>
+      <br>
       <button v-on:click="navigateToLogin" type="button" class="btn btn-warning">Logi sisse</button>
     </div>
   </div>

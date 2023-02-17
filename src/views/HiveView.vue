@@ -1,40 +1,44 @@
 <template>
   <div>
-    <AlertDanger :message="messageError"/>
-    <AlertSuccess :message="messageSuccess"/>
-  <div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-    <div class="col">
-      <ImageInput v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
-      <img v-if="hiveRequest.hivePicture == null" src="../assets/beehive.png">
-      <img :src="hiveRequest.hivePicture" class="img-thumbnail">
+      <AlertDanger style="align-content: center" class="col-3" :message="messageError"/>
+      <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
     </div>
 
-    <div class="col">
-      <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
-      <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
-      <div>
-        <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-        <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
-        <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
+      <div class="row justify-content-center">
+
+      <div class="col">
+        <ImageInput v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
+        <img v-if="hiveRequest.hivePicture == null" src="../assets/beehive.png">
+        <img :src="hiveRequest.hivePicture" class="img-thumbnail">
+      </div>
+
+      <div class="col">
+        <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
+        <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
+        <div>
+          <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
+          <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
+          <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
+          <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
+        </div>
+      </div>
+
+      <div class="col">
+        <div>
+        </div>
+        <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
+        <div class="row">
+          <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
+        </div>
+
+        <div>
+          <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus</button>
+
+        </div>
       </div>
     </div>
-
-    <div class="col">
-      <div>
-      </div>
-      <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
-      <div class="row">
-      <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
-      </div>
-
-      <div>
-        <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus</button>
-
-      </div>
-    </div>
-  </div>
     <div class="row justify-content-center">
 
       <div class="col-6">

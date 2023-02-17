@@ -3,12 +3,14 @@
   <div>
 
     <div class="row justify-content-center">
-      <AlertDanger :message="messageError"/>
-      <AlertSuccess :message="messageSuccess"/>
+
       <div class="col-3">
 
         <br/>
-        <h3 style="color:goldenrod">Registreeri kasutajaks</h3>
+        <h3>Registreeri kasutajaks</h3>
+        <br>
+        <AlertDanger :message="messageError"/>
+        <AlertSuccess :message="messageSuccess"/>
         <div class="input-group mb-3">
           <input v-model="user.email" type="email" class="form-control" placeholder="E-mail">
         </div>
@@ -18,7 +20,7 @@
         <div class="input-group mb-3">
           <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
         </div>
-        <button v-on:click="createNewUser" type="button" class="btn btn-warning">Loo kasutaja</button>
+        <button v-on:click="checkAllRequiredFields" type="button" class="btn btn-warning">Loo kasutaja</button>
         <div>
           <br/>
           <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
@@ -55,6 +57,23 @@ export default {
     navigateBack: function () {
       this.$router.push({name: 'homeRoute'})
     },
+
+    messageReset: function () {
+      this.messageError = ''
+      this.messageSuccess = ''
+    },
+
+    checkAllRequiredFields: function () {
+      if (this.user.email === '' || this.user.password === '' || this.passwordCheck === '') {
+        this.messageError = "Palun täida kõik väljad!"
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
+      } else {
+        this.createNewUser()
+      }
+    },
+
     createNewUser: function () {
       if (this.user.password === this.passwordCheck) {
         this.$http.post("/newuser", this.user, {

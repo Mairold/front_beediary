@@ -6,18 +6,18 @@
         <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#/profile">Minu profiil</a>
+              <a class="nav-link" href="#/profile">Minu profiil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#/apiary">Minu mesilad</a>
+              <a class="nav-link" href="#/apiary">Minu mesilad</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#/task">Minu ülesanded</a>
+              <a class="nav-link" aria-current="page" href="#/task">Minu ülesanded</a>
             </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a v-on:click="logout" class="nav-link active" aria-current="page" href="/">
+              <a v-on:click="logout" class="nav-link"navba href="/">
                 <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket"/>
                 Logi Välja</a>
             </li>

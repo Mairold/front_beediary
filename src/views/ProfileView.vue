@@ -1,6 +1,6 @@
 <template>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center my-4">
 
     <div class="col-3" style="align-content: center">
 

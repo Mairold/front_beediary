@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-4">
       <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
       <AlertDanger style="align-content: center" class="col-4" :message="messageDanger"/>
     </div>

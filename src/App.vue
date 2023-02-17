@@ -12,7 +12,7 @@
               <a class="nav-link active" aria-current="page" href="#/apiary">Minu mesilad</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#/visit">Minu ülesanded</a>
+              <a class="nav-link active" aria-current="page" href="#/task">Minu ülesanded</a>
             </li>
           </ul>
           <ul class="navbar-nav">

@@ -20,7 +20,8 @@
         <div>
           <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
           <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-          <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
+          <button v-if="isEdit" v-on:click="navigateToViewHive" type="button" class="btn btn-back">Tühista</button>
+          <button v-if="isAdd" v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
           <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
         </div>
       </div>
@@ -122,15 +123,20 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.putHive();
         this.messageSuccess = 'Taru andmed muudetud!'
-        this.navigateBack()
+        this.navigateToViewHive()
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }
     },
+
     navigateBack: function () {
       router.go(-1)
+    },
+
+    navigateToViewHive: function () {
       this.isView = true
       this.isEdit = false
+      this.$router.push({name: 'hiveRoute', query: {isView: 'true', hiveId: this.hiveId}})
     },
     navigateToAddApiaryView: function () {
       this.$router.push({name: 'addApiaryRoute'})
@@ -145,7 +151,7 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.postHive();
         this.messageSuccess = this.hiveRequest.hiveName + ' lisatud!'
-        this.navigateBack()
+        this.navigateToViewHive()
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }

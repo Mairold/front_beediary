@@ -3,7 +3,7 @@
     <nav v-if="isLoggedIn" class="navbar navbar-expand-lg navbar-bee bg-dark">
       <div class="container-fluid">
         <img src="./assets/bee_logo.png" alt="">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#/profile">Minu profiil</a>

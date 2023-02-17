@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-4">
     <AlertSuccess :message="messageSuccess"/>
     <AlertDanger :message="messageDanger"/>
     <div class="input-group mb-3">
@@ -9,7 +9,7 @@
       <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
     </div>
     <div>
-      <button v-on:click="changePassword" type="button" class="btn btn-warning">Muuda parooli</button>
+      <button v-on:click="checkAllRequiredFields" type="button" class="btn btn-warning">Muuda parooli</button>
     </div>
   </div>
 </template>
@@ -31,8 +31,21 @@ export default {
     }
   },
   methods: {
+    checkAllRequiredFields: function () {
+      if (this.userPasswordDto.password !== '' && this.passwordCheck !== '') {
+        this.changePassword();
+      } else {
+        this.messageDanger = "Täida mõlemad väljad!"
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
 
-
+      }
+    },
+    messageReset: function () {
+      this.messageDanger = ''
+      this.messageSuccess = ''
+    },
 
     changePassword: function () {
       if (this.userPasswordDto.password === this.passwordCheck) {

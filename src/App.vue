@@ -1,16 +1,29 @@
 <template>
   <div id="app">
-    <div v-if="isLoggedIn">
-      <nav>
-        <router-link to="/profile">Minu profiil</router-link> |
-        <router-link to="/apiary">Minu mesilad</router-link> |
-        <router-link to="/visit">Minu ülesanded</router-link> |
-        <a v-if="isLoggedIn" v-on:click="logout" href="">Logi välja</a>
-      </nav>
+    <nav v-if="isLoggedIn" class="navbar navbar-expand-lg navbar-bee bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="./assets/bee_logo.png" alt=""></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#/profile">Minu profiil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#/apiary">Minu mesilad</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#/visit">Minu ülesanded</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a v-on:click="logout" class="nav-link active" aria-current="page" href="/">Logi Välja</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-
-
-    </div>
     <router-view @emitLoginSuccessEvent = 'checkIfIsLoggedIn'/>
   </div>
 </template>

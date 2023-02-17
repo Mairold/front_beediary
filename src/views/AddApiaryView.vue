@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-4">
       <div class="col-3">
 
         <div class="input-group mb-3">

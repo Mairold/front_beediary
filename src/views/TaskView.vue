@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row" style="padding-left: 125px">
-      <ApiariesDropdown class="col-2" @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
+      <ApiariesDropdown class="col-2 my-4" @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
     </div>
     <div class="row justify-content-center">
 
@@ -17,7 +17,7 @@ import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
 import TasksToDoTable from "@/components/TasksToDoTable.vue";
 
 export default {
-  name: "VisitView",
+  name: "TaskView",
   components: {TasksToDoTable, ApiariesDropdown},
   data: function () {
     return {}

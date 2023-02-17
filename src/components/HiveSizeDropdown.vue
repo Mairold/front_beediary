@@ -1,5 +1,5 @@
 <template>
-  <div class="col-4">
+  <div>
     <select v-model="selectedTypeId" v-on:change="emitSelectedTypeId" :disabled="isView" class="form-select">
       <option value="0">Taru suurus</option>
       <option v-for="type in types" :value="type.typeId">{{ type.typeSize }}</option>

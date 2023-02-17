@@ -1,5 +1,5 @@
 <template>
-  <div class="col-4 my-3">
+  <div>
     <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" :disabled="isView" class="form-select">
       <option value="0">Mesilad</option>
       <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>

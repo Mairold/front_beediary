@@ -9,7 +9,7 @@
       <input v-model="passwordCheck" type="password" class="form-control" placeholder="Parool uuesti">
     </div>
     <div>
-      <button v-on:click="changePassword" type="button" class="btn btn-outline-secondary">Muuda parooli</button>
+      <button v-on:click="changePassword" type="button" class="btn btn-warning">Muuda parooli</button>
     </div>
   </div>
 </template>

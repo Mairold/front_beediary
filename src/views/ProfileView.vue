@@ -9,7 +9,7 @@
       <PasswordChangeInput/>
 
       <div>
-        <button v-on:click="navigateBack" type="button" class="btn btn-outline-secondary">Tühista</button>
+        <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
       </div>
     </div>
   </div>

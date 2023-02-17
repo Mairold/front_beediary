@@ -2,7 +2,7 @@
   <div id="app">
     <nav v-if="isLoggedIn" class="navbar navbar-expand-lg navbar-bee bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="./assets/bee_logo.png" alt=""></a>
+        <img src="./assets/bee_logo.png" alt="">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -17,13 +17,15 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a v-on:click="logout" class="nav-link active" aria-current="page" href="/"> <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" /> Logi Välja</a>
+              <a v-on:click="logout" class="nav-link active" aria-current="page" href="/">
+                <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket"/>
+                Logi Välja</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <router-view @emitLoginSuccessEvent = 'checkIfIsLoggedIn'/>
+    <router-view @emitLoginSuccessEvent='checkIfIsLoggedIn'/>
   </div>
 </template>
 
@@ -36,8 +38,8 @@ export default {
     }
   },
   methods: {
-    checkIfIsLoggedIn: function (){
-      if (sessionStorage.getItem('userId')== null) {
+    checkIfIsLoggedIn: function () {
+      if (sessionStorage.getItem('userId') == null) {
         this.isLoggedIn = false
       } else {
         this.isLoggedIn = true
@@ -72,7 +74,7 @@ export default {
   color: #2c3e50;
   background-image: url("../src/assets/background.jpeg");
   min-height: 100vh
-  }
+}
 
 
 nav {

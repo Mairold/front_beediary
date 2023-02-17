@@ -17,13 +17,12 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a v-on:click="logout" class="nav-link active" aria-current="page" href="/">Logi Välja</a>
+              <a v-on:click="logout" class="nav-link active" aria-current="page" href="/"> <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" /> Logi Välja</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
     <router-view @emitLoginSuccessEvent = 'checkIfIsLoggedIn'/>
   </div>
 </template>

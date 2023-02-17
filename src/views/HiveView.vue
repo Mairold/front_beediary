@@ -6,7 +6,7 @@
       <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
     </div>
 
-      <div class="row justify-content-center">
+    <div class="row justify-content-center">
 
       <div class="col">
         <ImageInput v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
@@ -29,12 +29,10 @@
         <div>
         </div>
         <HiveSizeDropdown ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
-        <div class="row">
-          <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
-        </div>
-
+        <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
         <div>
-          <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus</button>
+          <button v-if="!isView" v-on:click="navigateToAddApiaryView" type="button" class="btn btn-warning">Lisa uus
+          </button>
 
         </div>
       </div>
@@ -63,15 +61,23 @@ import router from "@/router";
 export default {
   name: "HiveView",
   components: {
-    AlertSuccess, AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown, VisitTable},
+    AlertSuccess,
+    AlertDanger,
+    ImageInput,
+    HiveSizeDropdown,
+    HiveNameInput,
+    HiveNotesInputBox,
+    ApiariesDropdown,
+    VisitTable
+  },
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),
       isEdit: false,
       isAdd: Boolean(this.$route.query.isAdd),
       hiveId: this.$route.query.hiveId,
-      messageError:'',
-      messageSuccess:'',
+      messageError: '',
+      messageSuccess: '',
       hiveRequest: {
         apiaryId: 0,
         typeId: 0,

@@ -1,56 +1,49 @@
 <template>
   <div>
+    <div class="row justify-content-center my-4">
+      <AlertDanger style="align-content: center" class="col-3" :message="messageError"/>
+      <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
+    </div>
 
-      <div class="row justify-content-center my-4">
-
-        <AlertDanger style="align-content: center" class="col-3" :message="messageError"/>
-        <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
+    <div class="row justify-content-center my-3">
+      <div class="col-3" style="align-content: center">
+        <img v-if="hiveRequest.hivePicture == null" height="200" width="150" src="../assets/beehive.png">
+        <img :src="hiveRequest.hivePicture" class="img-thumbnail">
+        <ImageInput class="my-3" v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
       </div>
 
-      <div class="row justify-content-center my-3">
-
-        <div class="col-3" style="align-content: center">
-          <img v-if="hiveRequest.hivePicture == null" height="200" width="150" src="../assets/beehive.png">
-          <img :src="hiveRequest.hivePicture" class="img-thumbnail">
-          <ImageInput class="my-3" v-if="!isView" ref="imageInput" @emitBase64Event="setHiveRequestPicture"/>
-        </div>
-
-        <div class="col-3">
-          <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
-          <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
-          <div class="my-3">
-            <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
-            <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-            <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-back mx-2">Tühista</button>
-            <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda
-            </button>
-          </div>
-        </div>
-
-        <div class="col-2">
-          <div>
-          </div>
-          <HiveSizeDropdown style="padding-right: 20px" ref="hiveSizeDropdown" :is-view="isView" @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
-
-          <div class="row my-3">
-            <ApiariesDropdown ref="apiariesDropdown" :is-view="isView"
-                              @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
-
-          </div>
-
-
-
-
+      <div class="col-3">
+        <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
+        <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
+        <div class="my-3">
+          <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
+          <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
+          <button v-if="!isView" v-on:click="navigateBack" type="button" class="btn btn-back mx-2">Tühista</button>
+          <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda
+          </button>
         </div>
       </div>
 
-
-      <div class="row justify-content-center">
-        <div class="col-6">
-          <VisitTable v-if="isView"/>
+      <div class="col-2">
+        <div>
         </div>
+        <HiveSizeDropdown style="padding-right: 20px" ref="hiveSizeDropdown" :is-view="isView"
+                          @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
+
+        <div class="row my-3">
+          <ApiariesDropdown ref="apiariesDropdown" :is-view="isView"
+                            @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
+        </div>
+
       </div>
     </div>
+
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <VisitTable v-if="isView"/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

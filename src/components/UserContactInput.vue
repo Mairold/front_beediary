@@ -66,7 +66,9 @@ export default {
           }
       ).then(response => {
         this.messageSuccess = "Andmed edukalt uuendatud"
-        this.$parent.timeoutAndReloadPage(2000)
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 2000)
       }).catch(error => {
         console.log(error)
       })

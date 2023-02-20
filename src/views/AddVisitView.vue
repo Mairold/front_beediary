@@ -5,39 +5,26 @@
       <AlertDanger style="align-content: center" class="col-4" :message="messageDanger"/>
     </div>
 
-    <!--    ROW 1-->
     <div class="row justify-content-center">
-      <!--      COL 1 -->
-      <div class="col-2"></div>
-      <!--      COL 2 -->
-      <div class="col-2">
-
+      <div class="col-2" style="align-content: center">
         <label>Külastuse kuupäev</label>
         <input v-model="visit.date" class="form-control" type="date"/>
-        <br>
-
-        <TasksCheckbox :visit="visit"/>
-
-        <br>
+        <TasksCheckbox class="my-3" :visit="visit"/>
         <div>
-          <button v-on:click="addNewVisit" type="button" class="btn btn-warning">Lisa külastus</button>
+          <button v-on:click="addNewVisit" type="button" class="btn btn-warning my-3">Lisa külastus</button>
         </div>
-
-        <br>
         <div>
           <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
         </div>
-
       </div>
-      <!--      COL 3-->
-      <div class="col-5">
-        <br>
-        <div class="col-6 form-floating">
-          <textarea v-model="visit.notes" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
-          <label for="floatingTextarea2">Märkused</label>
-        </div>
+
+
+      <div class="col-2 form-floating my-4" style="align-content: center">
+        <textarea v-model="visit.notes" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+        <label for="floatingTextarea2">Märkused</label>
       </div>
     </div>
+
   </div>
 </template>
 

@@ -1,8 +1,10 @@
 <template>
-  <div class="col-4">
+  <div>
     <div class="input-group mb-3">
       <input v-model="hiveName" :disabled="isView" type="text" class="form-control" placeholder="Taru nimi">
     </div>
+
+
   </div>
 </template>
 <script>
@@ -13,12 +15,12 @@ export default {
   },
   data: function () {
     return {
-      hiveName:''
+      hiveName: ''
     }
 
   },
-  methods:{
-    emitHiveName:function () {
+  methods: {
+    emitHiveName: function () {
       this.$emit('emitHiveNameEvent', this.hiveName)
     },
     setHiveName: function (hiveName) {

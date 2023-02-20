@@ -128,7 +128,6 @@ export default {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }
     },
-
     navigateBack: function () {
       router.go(-1)
     },
@@ -151,7 +150,9 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.postHive();
         this.messageSuccess = this.hiveRequest.hiveName + ' lisatud!'
-        this.navigateToViewHive()
+        setTimeout(() => {
+          this.navigateBack()
+        }, 2000)
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
       }

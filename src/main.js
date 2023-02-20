@@ -9,6 +9,7 @@ import "bootstrap/dist/js/bootstrap.js"
 import "../src/assets/myStyle.css"
 
 
+
 // font awesome stuff
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

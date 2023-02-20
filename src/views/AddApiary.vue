@@ -1,9 +1,7 @@
 <template>
   <div>
-
-    <div class="row justify-content-center my-4">
-      <div class="col-3">
-
+    <AlertDanger :message="messageDanger"/>
+    <AlertSuccess :message="messageSuccess"/>
         <div class="input-group mb-3">
           <input v-model="apiaryRequest.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
         </div>
@@ -15,22 +13,24 @@
         </div>
 
         <div>
-          <button v-on:click="addApiary" type="button" class="btn btn-warning">Lisa</button>
-          <button v-on:click="navigateToEditHiveView" type="button" class="btn btn-back">Tühista</button>
+          <button v-on:click="addApiary" type="button" class="btn btn-warning mx-2">Lisa</button>
+          <button v-on:click="emitHideInputBox" type="button" class="btn btn-back">Tühista</button>
         </div>
 
-      </div>
-    </div>
 
   </div>
 </template>
 
 <script>
 
-import router from "@/router";
+
+
+import AlertDanger from "@/components/AlertDanger.vue";
+import AlertSuccess from "@/components/AlertSuccess.vue";
 
 export default {
-  name: "AddApiaryView",
+  name: "AddApiary",
+  components: {AlertSuccess, AlertDanger},
   data: function () {
     return {
       isEdit: Boolean,
@@ -40,7 +40,9 @@ export default {
         apiaryName: '',
         latitude: '',
         longitude: ''
-      }
+      },
+      messageSuccess:'',
+      messageDanger:'',
     }
   },
   methods: {
@@ -49,10 +51,16 @@ export default {
       this.setLatitude(this.apiaryRequest.latitude)
       this.setLongitude(this.apiaryRequest.longitude)
       if(this.apiaryRequest.apiaryName !== ''){
+        this.messageSuccess = "Uus mesila lisatud"
         this.postApiary()
-        this.navigateToEditHiveView()
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 2000)
       } else {
-
+        this.messageDanger = "Lisa mesila nimi"
+        setTimeout(() => {
+          this.messageDanger = ''
+        }, 2000)
       }
     },
     postApiary: function () {
@@ -72,9 +80,11 @@ export default {
     setLongitude: function (longitude) {
       this.apiaryRequest.longitude = longitude
     },
-    navigateToEditHiveView: function () {
-      router.go(-2)
+
+    emitHideInputBox: function () {
+      this.$emit('emitHideInputBoxEvent')
     }
+
   }
 }
 </script>

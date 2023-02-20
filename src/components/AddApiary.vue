@@ -25,8 +25,8 @@
 
 
 
-import AlertDanger from "@/components/AlertDanger.vue";
-import AlertSuccess from "@/components/AlertSuccess.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 
 export default {
   name: "AddApiary",
@@ -34,7 +34,7 @@ export default {
   data: function () {
     return {
       isEdit: Boolean,
-
+      hiveId: this.hiveId,
       apiaryRequest: {
         userId: sessionStorage.getItem('userId'),
         apiaryName: '',
@@ -63,6 +63,8 @@ export default {
         }, 2000)
       }
     },
+
+
     postApiary: function () {
       this.$http.post("/apiary", this.apiaryRequest
       ).then(response => {

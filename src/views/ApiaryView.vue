@@ -17,7 +17,7 @@
 
 <script>
 import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
-import HivesTable from "@/components/HivesTable.vue";
+import HivesTable from "@/components/hives/HivesTable.vue";
 
 export default {
   name: "ApiaryView",

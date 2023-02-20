@@ -32,7 +32,7 @@
                           @emitSelectedTypeIdEvent="setHiveRequestTypeId"/>
 
         <div class="row my-3">
-          <ApiariesDropdown ref="apiariesDropdown" :is-view="isView"
+          <ApiariesDropdown ref="apiariesDropdown" :is-view="isView" :isEdit="isEdit"
                             @emitSelectedApiaryIdEvent="setHiveRequestApiaryId"/>
         </div>
 
@@ -50,12 +50,12 @@
 
 <script>
 import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
-import HiveNotesInputBox from "@/components/HiveNotesInputBox.vue";
-import HiveNameInput from "@/components/HiveNameInput.vue";
-import HiveSizeDropdown from "@/components/HiveSizeDropdown.vue";
+import HiveNotesInputBox from "@/components/hives/HiveNotesInputBox.vue";
+import HiveNameInput from "@/components/hives/HiveNameInput.vue";
+import HiveSizeDropdown from "@/components/hives/HiveSizeDropdown.vue";
 import ImageInput from "@/components/ImageInput.vue";
-import AlertDanger from "@/components/AlertDanger.vue";
-import AlertSuccess from "@/components/AlertSuccess.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 import VisitTable from "@/components/VisitTable.vue";
 import router from "@/router";
 
@@ -115,9 +115,15 @@ export default {
       if (this.allRequiredFieldsAreFilled()) {
         this.putHive();
         this.messageSuccess = 'Taru andmed muudetud!'
-        this.navigateToViewHive()
+        setTimeout(() => {
+          this.navigateToViewHive()
+        }, 2000)
+
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
       }
     },
 
@@ -144,7 +150,15 @@ export default {
         this.navigateToViewHive()
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
       }
+    },
+
+    messageReset: function () {
+      this.messageError = ''
+      this.messageSuccess = ''
     },
 
     postHive: function () {

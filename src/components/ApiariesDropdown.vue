@@ -10,8 +10,8 @@
       </select>
     </div>
     <div class="col-1 my-2">
-      <font-awesome-icon v-on:click="showAddApiaryInput" v-if="!isView" icon="fa-regular fa-square-plus"
-                         class="icon-hover"/>
+      <font-awesome-icon v-on:click="showAddApiaryInput" v-if="!isEdit" icon="fa-regular fa-square-plus" class="icon-hover"/>
+
     </div>
   </div>
 
@@ -23,13 +23,14 @@
 </template>
 <script>
 
-import AddApiary from "@/views/AddApiary.vue";
+import AddApiary from "@/components/AddApiary.vue";
 
 export default {
   name: 'ApiariesDropdown',
   components: {AddApiary},
   props: {
-    isView: Boolean
+    isView: Boolean,
+    isEdit: Boolean
   },
 
   data: function () {
@@ -49,6 +50,7 @@ export default {
         apiaryName: '',
         latitude: '',
         longitude: '',
+        hiveId: 0
       },
     }
   },

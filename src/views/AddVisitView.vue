@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import AlertSuccess from "@/components/AlertSuccess.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 import router from "@/router";
-import TasksCheckbox from "@/components/TasksCheckbox.vue";
-import AlertDanger from "@/components/AlertDanger.vue";
+import TasksCheckbox from "@/components/task/TasksCheckbox.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
 
 export default {
   name: "AddVisitView",

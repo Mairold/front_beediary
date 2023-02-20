@@ -14,7 +14,7 @@
 
 <script>
 import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
-import TasksToDoTable from "@/components/TasksToDoTable.vue";
+import TasksToDoTable from "@/components/task/TasksToDoTable.vue";
 
 export default {
   name: "TaskView",

@@ -33,8 +33,9 @@
 </template>
 
 <script>
-import AlertDanger from "@/components/AlertDanger.vue";
-import AlertSuccess from "@/components/AlertSuccess.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
+import VueSimpleAlert, {VueSimpleAlert as Swal} from "vue-simple-alert";
 
 export default {
   name: "NewUserView",
@@ -50,7 +51,7 @@ export default {
         userId: 0
       },
       messageError: '',
-      messageSuccess: ''
+      messageSuccess: '',
     }
   },
   methods: {
@@ -89,11 +90,13 @@ export default {
 
         }).catch(error => {
           this.messageError = "Kasutaja juba eksisteerib"
-          this.$parent.timeoutAndReloadPage(2000)
+          setTimeout(() => { this.messageError = ''
+          }, 2000 )
         })
       } else {
         this.messageError = "Bzzz! Paroolid ei ühti"
-        this.$parent.timeoutAndReloadPage(2000)
+        setTimeout(() => { this.messageError = ''
+        }, 2000 )
       }
     },
 

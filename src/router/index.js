@@ -8,6 +8,7 @@ import ProfileView from "@/views/ProfileView.vue";
 import NewUserView from "@/views/NewUserView.vue";
 import TaskView from "@/views/TaskView.vue";
 import AddVisitView from "@/views/AddVisitView.vue";
+import ForgotPasswordView from "@/views/ForgotPasswordView.vue";
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,11 @@ const routes = [
     path: '/add-visit',
     name: 'addVisitRoute',
     component: AddVisitView
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgotPasswordRoute',
+    component: ForgotPasswordView
   }
 ]
 

@@ -24,14 +24,14 @@
           <br/>
           <router-link :to="{name: 'newUserRoute'}">Registreeri kasutajaks</router-link>
         </div>
-        <router-link :to="{name: 'homeRoute'}">Unustasid parooli?</router-link>
+        <router-link :to="{name: 'forgotPasswordRoute'}">Unustasid parooli?</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import AlertDanger from "@/components/AlertDanger.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
 
 export default {
   name: "LoginView",

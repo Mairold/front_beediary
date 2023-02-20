@@ -14,8 +14,8 @@
   </div>
 </template>
 <script>
-import AlertSuccess from "@/components/AlertSuccess.vue";
-import AlertDanger from "@/components/AlertDanger.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
 
 export default {
   name: 'PasswordChangeInput',

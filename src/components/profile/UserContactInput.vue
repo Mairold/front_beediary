@@ -4,12 +4,9 @@
     <ProfilePicture :user-profile="userProfile"/>
     <ImageInput class="my-3" @emitBase64Event="setUserProfilePicture"/>
 
-      <br/>
-      <input v-model="userProfile.firstName" id="firstName" class="form-control" placeholder="Eesnimi">
-      <br/>
-      <input v-model="userProfile.lastName" class="form-control" placeholder="Perekonnanimi">
-      <br/>
-      <input v-model="userProfile.mobile" class="form-control" placeholder="Mob nr">
+      <input v-model="userProfile.firstName" id="firstName" class="form-control my-3" placeholder="Eesnimi">
+      <input v-model="userProfile.lastName" class="form-control my-3" placeholder="Perekonnanimi">
+      <input v-model="userProfile.mobile" class="form-control my-3" placeholder="Mob nr">
     <label>Sünnikuupäev</label>
     <input v-model="userProfile.dateOfBirth" id="startDate" class="form-control" type="date"/><br/>
     <div>
@@ -20,8 +17,8 @@
 </template>
 <script>
 import ImageInput from "@/components/ImageInput.vue";
-import ProfilePicture from "@/components/ProfilePicture.vue";
-import AlertSuccess from "@/components/AlertSuccess.vue";
+import ProfilePicture from "@/components/profile/ProfilePicture.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 
 export default {
   name: 'UserContactInput',
@@ -56,7 +53,6 @@ export default {
         console.log(error)
       })
     },
-
 
     updateUserProfile: function () {
       this.$http.put("/profile", this.userProfile, {

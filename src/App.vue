@@ -28,6 +28,8 @@
     <router-view @emitLoginSuccessEvent='checkIfIsLoggedIn'/>
   </div>
 </template>
+<simplert />
+
 
 <script>
 export default {

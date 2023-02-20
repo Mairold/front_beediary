@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import AlertSuccess from "@/components/AlertSuccess.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 import ImageInput from "@/components/ImageInput.vue";
-import AlertDanger from "@/components/AlertDanger.vue";
-import PasswordChangeInput from "@/components/PasswordChangeInput.vue";
-import UserContactInput from "@/components/UserContactInput.vue";
-import ProfilePicture from "@/components/ProfilePicture.vue";
+import AlertDanger from "@/components/alerts/AlertDanger.vue";
+import PasswordChangeInput from "@/components/profile/PasswordChangeInput.vue";
+import UserContactInput from "@/components/profile/UserContactInput.vue";
+import ProfilePicture from "@/components/profile/ProfilePicture.vue";
 
 export default {
   name: "ProfileView",
@@ -48,8 +48,6 @@ export default {
     }
   },
   methods: {
-
-
 
     navigateBack: function () {
       this.$router.push({name: 'apiaryRoute'})

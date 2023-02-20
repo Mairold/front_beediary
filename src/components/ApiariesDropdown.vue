@@ -23,7 +23,7 @@
 </template>
 <script>
 
-import AddApiary from "@/views/AddApiary.vue";
+import AddApiary from "@/components/AddApiary.vue";
 
 export default {
   name: 'ApiariesDropdown',

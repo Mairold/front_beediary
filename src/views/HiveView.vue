@@ -17,11 +17,11 @@
         <HiveNameInput ref="hiveNameInput" :is-view="isView" @emitHiveNameEvent="setHiveRequestHiveName"/>
         <HiveNotesInputBox ref="hiveNotesInputBox" :is-view="isView" @emitHiveNoteEvent="setHiveRequestHiveNote"/>
         <div class="my-3">
-          <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning">Salvesta</button>
-          <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning">Salvesta</button>
-          <button v-if="isEdit" v-on:click="navigateToViewHive" type="button" class="btn btn-back">Tühista</button>
-          <button v-if="isAdd" v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
-          <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning">Muuda</button>
+          <button v-if="isAdd" v-on:click="addHive" type="button" class="btn btn-warning mx-2">Salvesta</button>
+          <button v-if="isEdit" v-on:click="updateHive" type="button" class="btn btn-warning mx-2">Salvesta</button>
+          <button v-if="isEdit" v-on:click="navigateToViewHive" type="button" class="btn btn-back mx-2">Tühista</button>
+          <button v-if="isAdd" v-on:click="navigateBack" type="button" class="btn btn-back mx-2">Tühista</button>
+          <button v-if="isView" v-on:click="navigateToEditHiveView" type="button" class="btn btn-warning mx-2">Muuda</button>
         </div>
       </div>
 
@@ -62,15 +62,23 @@ import router from "@/router";
 export default {
   name: "HiveView",
   components: {
-    AlertSuccess, AlertDanger, ImageInput, HiveSizeDropdown, HiveNameInput, HiveNotesInputBox, ApiariesDropdown, VisitTable},
+    AlertSuccess,
+    AlertDanger,
+    ImageInput,
+    HiveSizeDropdown,
+    HiveNameInput,
+    HiveNotesInputBox,
+    ApiariesDropdown,
+    VisitTable
+  },
   data: function () {
     return {
       isView: Boolean(this.$route.query.isView),
       isEdit: false,
       isAdd: Boolean(this.$route.query.isAdd),
       hiveId: this.$route.query.hiveId,
-      messageError:'',
-      messageSuccess:'',
+      messageError: '',
+      messageSuccess: '',
       hiveRequest: {
         apiaryId: 0,
         typeId: 0,

@@ -23,6 +23,10 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueAxios, axios, VueSimpleAlert);
 Vue.config.productionTip = false
 
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674',
+};
 
 new Vue({
   router,

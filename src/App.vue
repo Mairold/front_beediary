@@ -17,7 +17,7 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a v-on:click="logout" class="nav-link"navba href="/">
+              <a v-on:click="logout" class="nav-link" href="/">
                 <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket"/>
                 Logi Välja</a>
             </li>

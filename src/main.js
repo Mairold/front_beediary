@@ -23,6 +23,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueAxios, axios, VueSimpleAlert);
 Vue.config.productionTip = false
 
+
 new Vue({
   router,
   render: function (h) { return h(App) }

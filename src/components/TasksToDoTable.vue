@@ -11,18 +11,19 @@
         <th></th>
       </tr>
       </thead>
-      <tbody v-for="visit in visits" >
+      <tbody v-for="visit in visits">
       <tr v-for="toDoTask in visit.toDoTasks">
 
-            <td> {{ visit.hiveName }}</td>
-            <td>{{ visit.lastVisitDate }}</td>
-            <td>
-                {{ toDoTask.taskName }}
-            </td>
-            <td>{{ visit.apiaryName }}</td>
-            <th>
-              <font-awesome-icon v-on:click="deleteToDoTask(visit.visitId, toDoTask.taskId)" class="icon-hover" icon="fa-solid fa-check"/>
-            </th>
+        <td> {{ visit.hiveName }}</td>
+        <td>{{ visit.lastVisitDate }}</td>
+        <td>
+          {{ toDoTask.taskName }}
+        </td>
+        <td>{{ visit.apiaryName }}</td>
+        <th>
+          <font-awesome-icon v-on:click="deleteToDoTask(visit.visitId, toDoTask.taskId)" class="icon-hover"
+                             icon="fa-solid fa-check"/>
+        </th>
       </tr>
 
       </tbody>
@@ -30,6 +31,8 @@
   </div>
 </template>
 <script>
+import VueSimpleAlert from "vue-simple-alert";
+
 export default {
   name: 'TasksToDoTable',
   data: function () {
@@ -68,16 +71,18 @@ export default {
       })
     },
     deleteToDoTask: function (visitId, taskId) {
-      this.$http.delete("/tasks", {
-            params: {
-              visitId: visitId,
-              taskId: taskId
+      VueSimpleAlert.confirm("Kinnita, et tegevus on tehtud?").then(() => {
+        this.$http.delete("/tasks", {
+              params: {
+                visitId: visitId,
+                taskId: taskId
+              }
             }
-          }
-      ).then(response => {
-        this.getVisitTasks(0)
-      }).catch(error => {
-        console.log(error)
+        ).then(response => {
+          this.getVisitTasks(0)
+        }).catch(error => {
+          console.log(error)
+        })
       })
     }
   },

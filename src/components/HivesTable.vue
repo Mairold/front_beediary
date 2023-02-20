@@ -1,7 +1,7 @@
 <template>
   <div class="col-6">
 
-    <table class="table table-striped bg-light bg-opacity-50" >
+    <table class="table table-striped bg-light bg-opacity-50">
       <thead>
       <tr>
         <th scope="col">Taru nimi</th>
@@ -21,7 +21,9 @@
         <td>{{ hive.lastVisitDate }}</td>
         <td>{{ hive.typeSize }}</td>
         <td>{{ hive.apiaryName }}</td>
-        <th><font-awesome-icon v-on:click="deleteHive(hive.hiveId)" class="icon-hover" icon="fa-solid fa-trash-can"/></th>
+        <th>
+          <font-awesome-icon v-on:click="deleteHive(hive.hiveId)" class="icon-hover" icon="fa-solid fa-trash-can"/>
+        </th>
       </tr>
       </tbody>
     </table>
@@ -30,6 +32,8 @@
 </template>
 
 <script>
+import VueSimpleAlert from "vue-simple-alert";
+
 export default {
   name: 'HivesTable',
   data: function () {
@@ -63,15 +67,18 @@ export default {
       })
     },
     deleteHive: function (hiveId) {
-      this.$http.delete("/apiary/hive", {
-            params: {
-              hiveId: hiveId,
+      VueSimpleAlert.confirm("Kinnita, et soovid taru kustutada?").then(() => {
+        this.$http.delete("/apiary/hive", {
+              params: {
+                hiveId: hiveId,
+              }
             }
-          }
-      ).then(response => {
-        this.getAllUserHives(0)
-      }).catch(error => {
-        console.log(error)
+        ).then(response => {
+          this.getAllUserHives(0)
+
+        }).catch(error => {
+          console.log(error)
+        })
       })
     },
 

@@ -45,6 +45,8 @@
 </template>
 <script>
 
+import VueSimpleAlert from "vue-simple-alert";
+
 export default {
   name: 'VisitTable',
   data: function () {
@@ -85,15 +87,17 @@ export default {
     },
 
     deleteVisit: function (visitId) {
-      this.$http.delete("/hive/visits", {
-            params: {
-              visitId: visitId
+      VueSimpleAlert.confirm("Kinnita, et soovid külastuse kustutada?").then(() => {
+        this.$http.delete("/hive/visits", {
+              params: {
+                visitId: visitId
+              }
             }
-          }
-      ).then(response => {
-        this.getAllHiveVisits()
-      }).catch(error => {
-        console.log(error)
+        ).then(response => {
+          this.getAllHiveVisits()
+        }).catch(error => {
+          console.log(error)
+        })
       })
     },
 

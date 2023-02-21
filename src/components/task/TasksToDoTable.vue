@@ -4,7 +4,7 @@
       <thead>
       <tr>
         <th scope="col">Taru nimi</th>
-        <th scope="col">Viimati külastatud</th>
+        <th scope="col">Viimati külastatud <font-awesome-icon v-on:click="sortByDates" icon="fa-solid fa-sort-down" class="icon-hover"/></th>
         <th scope="col">Ülesanded</th>
         <th scope="col">Mesila</th>
         <th scope="col">Tehtud</th>
@@ -57,6 +57,15 @@ export default {
     }
   },
   methods: {
+
+    sortByDates: function () {
+      return this.visits.sort((a, b) => {
+
+        return new Date(b.lastVisitDate) - new Date(a.lastVisitDate)
+      });
+      return this.visits;
+    },
+
     getVisitTasks: function (apiaryId) {
       this.$http.get("/tasks", {
             params: {

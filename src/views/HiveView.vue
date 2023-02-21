@@ -123,8 +123,9 @@ export default {
         this.putHive();
         this.messageSuccess = 'Taru andmed muudetud!'
         setTimeout(() => {
-          this.navigateToViewHive()
+          this.messageReset()
         }, 2000)
+        this.navigateToViewHive()
 
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'

@@ -52,7 +52,9 @@ export default {
         this.sendPatchRequest();
       } else {
         this.messageDanger = "Bzzz! Paroolid ei ühti"
-        this.$parent.timeoutAndReloadPage(2000)
+        setTimeout(() => {
+          this.messageReset()
+        }, 2000)
       }
     },
 

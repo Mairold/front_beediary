@@ -23,6 +23,8 @@ export default {
     return {}
   },
   methods: {
+
+
     setSelectedApiaryId: function (apiaryId) {
       this.$refs.tasks.getVisitTasks(apiaryId)
     }

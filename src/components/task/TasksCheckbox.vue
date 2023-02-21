@@ -2,15 +2,15 @@
   <div>
   <h6>Tehtud tegevused</h6>
   <div v-for="task in visit.tasks" class="form-check">
-    <input v-model="task.done" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-    <label class="form-check-label" for="defaultCheck1">
+    <input v-model="task.done" class="form-check-input" type="checkbox">
+    <label class="form-check-label">
       {{ task.taskName }}
     </label>
   </div>
   <br><h6>Ülesanded</h6>
   <div v-for="task in visit.tasks" class="form-check">
-    <input v-model="task.toDo" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-    <label class="form-check-label" for="defaultCheck1">
+    <input v-model="task.toDo" class="form-check-input" type="checkbox">
+    <label class="form-check-label">
       {{ task.taskName }}
     </label>
   </div>

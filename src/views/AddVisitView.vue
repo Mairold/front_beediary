@@ -51,7 +51,7 @@ export default {
                 taskId: 0,
                 taskName: '',
                 done: false,
-                toDo: false,
+                toDo: false
               }
             ]
           },
@@ -63,7 +63,7 @@ export default {
     },
 
     addNewVisit: function () {
-      if (this.allRequiredFieldsAreFilled(true)) {
+      if (this.allRequiredFieldsAreFilled()) {
         this.postVisit()
       } else {
         this.messageDanger = "Palun lisa kuupäev ja vali tehtud tegevused!"

@@ -7,9 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.js"
 import "../src/assets/myStyle.css"
 
-import { Simplert } from 'vue2-simplert-plugin'
-import 'vue2-simplert-plugin/dist/vue2-simplert-plugin.min.css'
-
 // font awesome stuff
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -20,13 +17,10 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(faUserSecret, fas, faR, far)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.use(VueAxios, axios, Simplert);
+Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
 
-const options = {
-  confirmButtonColor: '#41b882',
-  cancelButtonColor: '#ff7674',
-};
+
 
 new Vue({
   router,

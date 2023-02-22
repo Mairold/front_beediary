@@ -1,17 +1,23 @@
 <template>
   <div class="col-6">
-    <table class="table table-striped bg-light bg-opacity-50" >
+    <table class="table table-striped bg-light bg-opacity-50">
       <thead>
       <tr>
-        <th scope="col">Taru nimi <font-awesome-icon v-on:click="sortByNames" icon="fa-solid fa-sort-down" class="icon-hover"/> </th>
-        <th scope="col">Viimati külastatud <font-awesome-icon v-on:click="sortByDates" icon="fa-solid fa-sort-down" class="icon-hover"/> </th>
+        <th scope="col">Taru pilt</th>
+        <th scope="col">Taru nimi
+          <font-awesome-icon v-on:click="sortByNames" icon="fa-solid fa-sort-down" class="icon-hover"/>
+        </th>
+        <th scope="col">Viimati külastatud
+          <font-awesome-icon v-on:click="sortByDates" icon="fa-solid fa-sort-down" class="icon-hover"/>
+        </th>
         <th scope="col">Taru suurus</th>
         <th scope="col">Mesila</th>
-        <th></th>
+
       </tr>
       </thead>
       <tbody>
       <tr v-for="hive in hives">
+        <td><img v-if="hive.hivePicture !== null" height="100" width="100" :src="hive.hivePicture"></td>
         <td>
           <router-link :to="{name: 'hiveRoute', query:{isView: 'true', hiveId: hive.hiveId}}">
             {{ hive.hiveName }}
@@ -45,7 +51,8 @@ export default {
           apiaryName: '',
           typeSize: '',
           lastVisitDate: '',
-          hiveName: ''
+          hiveName: '',
+          hivePicture: ''
         }
       ],
     }
@@ -104,7 +111,6 @@ export default {
         console.log(error)
       })
     },
-
 
 
   },

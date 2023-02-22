@@ -55,7 +55,6 @@ export default {
           }).addTo(map);
       this.addPins(map);
       map.on("click", function (e){
-
         var marker = new L.marker(e.latlng).addTo(map).bindPopup();
       })
     },

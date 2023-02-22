@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
+import ApiariesDropdown from "@/components/apiaries/ApiariesDropdown.vue";
 import HivesTable from "@/components/hives/HivesTable.vue";
 
 export default {

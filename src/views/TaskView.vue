@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
+import ApiariesDropdown from "@/components/apiaries/ApiariesDropdown.vue";
 import TasksToDoTable from "@/components/task/TasksToDoTable.vue";
 
 export default {

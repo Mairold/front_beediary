@@ -1,8 +1,5 @@
 <template>
   <div class="col-6">
-
-
-
     <table class="table table-striped bg-light bg-opacity-50" >
       <thead>
       <tr>

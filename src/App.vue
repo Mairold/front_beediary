@@ -16,7 +16,7 @@
                 Minu mesilad
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Kõik mesilad</a></li>
+                <li><a class="dropdown-item" href="#/apiaries">Mesilate andmed</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Kaart</a></li>
               </ul>

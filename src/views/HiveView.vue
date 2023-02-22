@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
+import ApiariesDropdown from "@/components/apiaries/ApiariesDropdown.vue";
 import HiveNotesInputBox from "@/components/hives/HiveNotesInputBox.vue";
 import HiveNameInput from "@/components/hives/HiveNameInput.vue";
 import HiveSizeDropdown from "@/components/hives/HiveSizeDropdown.vue";

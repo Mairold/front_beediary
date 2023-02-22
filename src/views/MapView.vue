@@ -53,16 +53,19 @@ export default {
             id: "mapbox/streets-v11",
             accessToken: "pk.eyJ1IjoibmlwaXRpcmkyIiwiYSI6ImNsZWU3cnlxZTBlZm4zdnAya3NyM2RpNGUifQ.bXlgwuQ8jpeLz0o0JrOptA",
           }).addTo(map);
-      this.addPins(map);
-      map.on("click", function (e){
-
-        var marker = new L.marker(e.latlng).addTo(map).bindPopup();
-      })
+      this.addUserApiaryPins(map);
+      this.addNewPin(map);
     },
-    addPins: function (map) {
+    addUserApiaryPins: function (map) {
       for (let i = 0; i < this.userApiaries.length; i++) {
         L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
       }
+    },
+    addNewPin: function (map) {
+      map.on("click", function (e) {
+        var marker = new L.marker(e.latlng).addTo(map)
+            .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)));
+      })
     }
   },
   mounted() {

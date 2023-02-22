@@ -22,6 +22,7 @@ import {library} from "@fortawesome/fontawesome-svg-core"
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {faUserSecret, fas, faR} from '@fortawesome/free-solid-svg-icons'
 import {far} from '@fortawesome/free-regular-svg-icons'
+import L from "leaflet";
 
 // font awesome stuff
 library.add(faUserSecret, fas, faR, far)

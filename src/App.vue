@@ -18,15 +18,11 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#/apiaries">Mesilate andmed</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Kaart</a></li>
+                <li><a class="dropdown-item" href="#/map">Kaart</a></li>
               </ul>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#/task">Minu ülesanded</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#/map">Kaart</a>
             </li>
           </ul>
           <ul class="navbar-nav">

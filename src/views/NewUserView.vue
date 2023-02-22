@@ -25,7 +25,6 @@
 <script>
 import AlertDanger from "@/components/alerts/AlertDanger.vue";
 import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
-import VueSimpleAlert, {VueSimpleAlert as Swal} from "vue-simple-alert";
 
 export default {
   name: "NewUserView",
@@ -57,7 +56,7 @@ export default {
     },
     createNewUser: function () {
       if (this.user.password === this.passwordCheck) {
-        this.$http.post("/newuser", this.user, {
+        this.$http.post("/profile/newuser", this.user, {
               params: {
                 email: this.user.email,
                 password: this.user.password
@@ -92,7 +91,7 @@ export default {
         this.loginResponse = response.data
         sessionStorage.setItem('userId', this.loginResponse.userId)
         this.$emit('emitLoginSuccessEvent')
-        this.$router.push({name: 'apiaryRoute'})
+        this.$router.push({name: 'apiaryHivesRoute'})
       }).catch(error => {
         console.log(error)
       })

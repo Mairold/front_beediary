@@ -1,20 +1,24 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-10">
-        <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" :disabled="isView" class="form-select">
-          <option value="0">Mesilad</option>
-          <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
-        </select>
-      </div>
-      <div class="col-1 my-2">
-        <font-awesome-icon v-on:click="showAddApiaryInput" v-if="!isEdit" icon="fa-regular fa-square-plus"
-                           class="icon-hover"/>
-      </div>
+  <div class="row">
+
+    <div class="col-10">
+      <select v-model="selectedApiaryId" v-on:change="emitSelectedApiaryId" :disabled="isView" class="form-select">
+        <option value="0">Mesilad</option>
+        <option v-for="apiary in userApiaries" :value="apiary.apiaryId">{{ apiary.apiaryName }}</option>
+
+      </select>
     </div>
-    <div class="row my-3">
-      <AddApiary @emitHideInputBoxEvent="hideAddApiaryInput" v-if="isAdd"/>
+    <div class="col-1 my-2">
+      <font-awesome-icon v-on:click="showAddApiaryInput" v-if="!isEdit" icon="fa-regular fa-square-plus" class="icon-hover"/>
+
     </div>
+  </div>
+
+  <div class="row my-3">
+    <AddApiary @emitHideInputBoxEvent="hideAddApiaryInput" v-if="isAdd"/>
+  </div>
+
   </div>
 </template>
 <script>

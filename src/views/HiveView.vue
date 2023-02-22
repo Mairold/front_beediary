@@ -41,7 +41,7 @@
   </div>
 </template>
 <script>
-import ApiariesDropdown from "@/components/ApiariesDropdown.vue";
+import ApiariesDropdown from "@/components/apiaries/ApiariesDropdown.vue";
 import HiveNotesInputBox from "@/components/hives/HiveNotesInputBox.vue";
 import HiveNameInput from "@/components/hives/HiveNameInput.vue";
 import HiveSizeDropdown from "@/components/hives/HiveSizeDropdown.vue";
@@ -103,8 +103,9 @@ export default {
         this.putHive();
         this.messageSuccess = 'Taru andmed muudetud!'
         setTimeout(() => {
-          this.navigateToViewHive()
+          this.messageReset()
         }, 2000)
+        this.navigateToViewHive()
 
       } else {
         this.messageError = 'Täida kõik kohustuslikud väljad!'

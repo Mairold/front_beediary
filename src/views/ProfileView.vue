@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     navigateBack: function () {
-      this.$router.push({name: 'apiaryRoute'})
+      this.$router.push({name: 'apiaryHivesRoute'})
     },
   }
 }

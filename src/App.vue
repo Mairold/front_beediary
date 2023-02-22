@@ -7,10 +7,21 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="#/profile">Minu profiil</a>
+            </li><li class="nav-item">
+              <a class="nav-link" href="#/apiary">Minu tarud</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/apiary">Minu mesilad</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Minu mesilad
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#/apiaries">Mesilate andmed</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Kaart</a></li>
+              </ul>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#/task">Minu ülesanded</a>
             </li>

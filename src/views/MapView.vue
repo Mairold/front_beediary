@@ -54,6 +54,10 @@ export default {
             accessToken: "pk.eyJ1IjoibmlwaXRpcmkyIiwiYSI6ImNsZWU3cnlxZTBlZm4zdnAya3NyM2RpNGUifQ.bXlgwuQ8jpeLz0o0JrOptA",
           }).addTo(map);
       this.addPins(map);
+      map.on("click", function (e){
+
+        var marker = new L.marker(e.latlng).addTo(map).bindPopup();
+      })
     },
     addPins: function (map) {
       for (let i = 0; i < this.userApiaries.length; i++) {

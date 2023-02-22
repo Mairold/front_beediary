@@ -3,8 +3,6 @@
     <div class="input-group mb-3">
       <input v-model="hiveName" :disabled="isView" type="text" class="form-control" placeholder="Taru nimi">
     </div>
-
-
   </div>
 </template>
 <script>
@@ -17,7 +15,6 @@ export default {
     return {
       hiveName: ''
     }
-
   },
   methods: {
     emitHiveName: function () {

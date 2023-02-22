@@ -1,17 +1,11 @@
 <template>
-
   <div>
-
     <div class="row justify-content-center">
-
-      <div class="col-3">
-
-        <br/>
+      <div class="col-3 my-5">
         <h3>Registreeri kasutajaks</h3>
-        <br>
         <AlertDanger :message="messageError"/>
         <AlertSuccess :message="messageSuccess"/>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 my-4">
           <input v-model="user.email" type="email" class="form-control" placeholder="E-mail">
         </div>
         <div class="input-group mb-3">
@@ -22,16 +16,12 @@
         </div>
         <button v-on:click="checkAllRequiredFields" type="button" class="btn btn-warning">Loo kasutaja</button>
         <div>
-          <br/>
-          <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
+          <button v-on:click="navigateBack" type="button" class="btn btn-back my-2">Tühista</button>
         </div>
-
       </div>
     </div>
   </div>
-
 </template>
-
 <script>
 import AlertDanger from "@/components/alerts/AlertDanger.vue";
 import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
@@ -55,15 +45,6 @@ export default {
     }
   },
   methods: {
-    navigateBack: function () {
-      this.$router.push({name: 'homeRoute'})
-    },
-
-    messageReset: function () {
-      this.messageError = ''
-      this.messageSuccess = ''
-    },
-
     checkAllRequiredFields: function () {
       if (this.user.email === '' || this.user.password === '' || this.passwordCheck === '') {
         this.messageError = "Palun täida kõik väljad!"
@@ -74,7 +55,6 @@ export default {
         this.createNewUser()
       }
     },
-
     createNewUser: function () {
       if (this.user.password === this.passwordCheck) {
         this.$http.post("/newuser", this.user, {
@@ -85,21 +65,22 @@ export default {
             }
         ).then(response => {
           this.messageSuccess = "Uus kasutaja registreeritud!"
-          setTimeout(() => { this.sendLoginRequest()
+          setTimeout(() => {
+            this.sendLoginRequest()
           }, 2000)
-
         }).catch(error => {
           this.messageError = "Kasutaja juba eksisteerib"
-          setTimeout(() => { this.messageError = ''
-          }, 2000 )
+          setTimeout(() => {
+            this.messageError = ''
+          }, 2000)
         })
       } else {
         this.messageError = "Bzzz! Paroolid ei ühti"
-        setTimeout(() => { this.messageError = ''
-        }, 2000 )
+        setTimeout(() => {
+          this.messageError = ''
+        }, 2000)
       }
     },
-
     sendLoginRequest: function () {
       this.$http.get("/login", {
             params: {
@@ -115,6 +96,13 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+    navigateBack: function () {
+      this.$router.push({name: 'homeRoute'})
+    },
+    messageReset: function () {
+      this.messageError = ''
+      this.messageSuccess = ''
     }
   }
 

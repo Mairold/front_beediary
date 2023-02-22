@@ -1,21 +1,14 @@
 <template>
-
   <div class="row justify-content-center my-4">
-
     <div class="col-3" style="align-content: center">
-
-
       <UserContactInput :user-profile="userProfile"/>
       <PasswordChangeInput/>
-
       <div>
         <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
       </div>
     </div>
   </div>
-
 </template>
-
 <script>
 import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 import ImageInput from "@/components/ImageInput.vue";
@@ -48,12 +41,9 @@ export default {
     }
   },
   methods: {
-
     navigateBack: function () {
       this.$router.push({name: 'apiaryRoute'})
     },
-
-
   }
 }
 </script>

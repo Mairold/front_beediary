@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <table class="table table-hover">
       <thead>
       <tr>
@@ -9,7 +8,6 @@
         <th scope="col">Märkused</th>
         <th scope="col">Ülesanded</th>
         <th></th>
-
       </tr>
       </thead>
       <tbody>
@@ -37,14 +35,11 @@
     <br>
     <div class="row col-2">
       <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-warning">Lisa uus</button>
-
     </div>
     <br>
-
   </div>
 </template>
 <script>
-
 import VueSimpleAlert from "vue-simple-alert";
 
 export default {
@@ -85,7 +80,6 @@ export default {
         console.log(error)
       })
     },
-
     deleteVisit: function (visitId) {
       VueSimpleAlert.confirm("Kinnita, et soovid külastuse kustutada?").then(() => {
         this.$http.delete("/hive/visits", {
@@ -100,14 +94,10 @@ export default {
         })
       })
     },
-
     navigateToAddVisitView: function () {
       this.$router.push({name: 'addVisitRoute', query: {hiveId: this.hiveId}})
-
-
     }
   },
-
   beforeMount() {
     this.getAllHiveVisits()
   }

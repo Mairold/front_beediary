@@ -31,7 +31,6 @@
     <router-view @emitLoginSuccessEvent='checkIfIsLoggedIn'/>
   </div>
 </template>
-
 <script>
 export default {
   name: 'AppView',
@@ -52,21 +51,17 @@ export default {
       sessionStorage.clear()
       this.isLoggedIn = false
     },
-
     timeoutAndReloadPage: function (timeOut) {
       setTimeout(() => {
         this.$router.go(0)
       }, timeOut)
     },
-
   },
   beforeMount() {
     this.checkIfIsLoggedIn()
   }
 }
 </script>
-
-
 <style>
 
 #app {
@@ -74,21 +69,17 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: rgba(231, 161, 31, 0.95);
   background-image: url("../src/assets/background.jpeg");
   min-height: 100vh
 }
-
-
 nav {
   padding: 30px;
 }
-
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: rgba(231, 161, 31, 0.95);
 }
-
 nav a.router-link-exact-active {
   color: #b37a00;
 }

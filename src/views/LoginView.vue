@@ -29,7 +29,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import AlertDanger from "@/components/alerts/AlertDanger.vue";
 

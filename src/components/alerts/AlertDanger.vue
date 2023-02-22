@@ -1,6 +1,6 @@
 <template>
   <div v-if="message != ''" class="alert alert-bee" role="alert">
-    {{message}}
+    {{ message }}
   </div>
 </template>
 

@@ -14,59 +14,59 @@ import mapView from "@/views/MapView.vue";
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'homeRoute',
-    component: HomeView
-  },
-  {
-    path: '/login',
-    name: 'loginRoute',
-    component: LoginView
-  },
-  {
-    path: '/apiary',
-    name: 'apiaryRoute',
-    component: ApiaryView
-  },{
-    path: '/hive',
-    name: 'hiveRoute',
-    component: HiveView
-  },
-  {
-    path: '/profile',
-    name: 'profileRoute',
-    component: ProfileView
-  },
-  {
-    path: '/new-user',
-    name: 'newUserRoute',
-    component: NewUserView
-  },
-  {
-    path: '/task',
-    name: 'taskRoute',
-    component: TaskView
-  },
-  {
-    path: '/add-visit',
-    name: 'addVisitRoute',
-    component: AddVisitView
-  },
-  {
-    path: '/forgot-password',
-    name: 'forgotPasswordRoute',
-    component: ForgotPasswordView
-  },
-  {
-    path: '/map',
-    name: 'mapRoute',
-    component: mapView
-  }
+    {
+        path: '/',
+        name: 'homeRoute',
+        component: HomeView
+    },
+    {
+        path: '/login',
+        name: 'loginRoute',
+        component: LoginView
+    },
+    {
+        path: '/apiary',
+        name: 'apiaryRoute',
+        component: ApiaryView
+    }, {
+        path: '/hive',
+        name: 'hiveRoute',
+        component: HiveView
+    },
+    {
+        path: '/profile',
+        name: 'profileRoute',
+        component: ProfileView
+    },
+    {
+        path: '/new-user',
+        name: 'newUserRoute',
+        component: NewUserView
+    },
+    {
+        path: '/task',
+        name: 'taskRoute',
+        component: TaskView
+    },
+    {
+        path: '/add-visit',
+        name: 'addVisitRoute',
+        component: AddVisitView
+    },
+    {
+        path: '/forgot-password',
+        name: 'forgotPasswordRoute',
+        component: ForgotPasswordView
+    },
+    {
+        path: '/map',
+        name: 'mapRoute',
+        component: mapView
+    }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

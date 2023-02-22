@@ -3,16 +3,14 @@
     <AlertSuccess :message="messageSuccess"/>
     <ProfilePicture :user-profile="userProfile"/>
     <ImageInput class="my-3" @emitBase64Event="setUserProfilePicture"/>
-
-      <input v-model="userProfile.firstName" id="firstName" class="form-control my-3" placeholder="Eesnimi">
-      <input v-model="userProfile.lastName" class="form-control my-3" placeholder="Perekonnanimi">
-      <input v-model="userProfile.mobile" class="form-control my-3" placeholder="Mob nr">
+    <input v-model="userProfile.firstName" id="firstName" class="form-control my-3" placeholder="Eesnimi">
+    <input v-model="userProfile.lastName" class="form-control my-3" placeholder="Perekonnanimi">
+    <input v-model="userProfile.mobile" class="form-control my-3" placeholder="Mob nr">
     <label>Sünnikuupäev</label>
     <input v-model="userProfile.dateOfBirth" id="startDate" class="form-control" type="date"/><br/>
     <div>
       <button v-on:click="updateUserProfile" type="button" class="btn btn-warning">Salvesta</button>
     </div>
-
   </div>
 </template>
 <script>
@@ -37,11 +35,8 @@ export default {
           }
     }
   },
-
   methods: {
-
     getUserProfile: function () {
-
       this.$http.get("/profile", {
             params: {
               userId: this.userProfile.userId
@@ -53,7 +48,6 @@ export default {
         console.log(error)
       })
     },
-
     updateUserProfile: function () {
       this.$http.put("/profile", this.userProfile, {
             params: {
@@ -69,11 +63,9 @@ export default {
         console.log(error)
       })
     },
-
     setUserProfilePicture: function (pictureBase64Data) {
       this.userProfile.picture = pictureBase64Data
     }
-
   },
   beforeMount() {
     this.getUserProfile()

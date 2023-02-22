@@ -39,14 +39,8 @@ export default {
         setTimeout(() => {
           this.messageReset()
         }, 2000)
-
       }
     },
-    messageReset: function () {
-      this.messageDanger = ''
-      this.messageSuccess = ''
-    },
-
     changePassword: function () {
       if (this.userPasswordDto.password === this.passwordCheck) {
         this.sendPatchRequest();
@@ -55,7 +49,10 @@ export default {
         this.$parent.timeoutAndReloadPage(2000)
       }
     },
-
+    messageReset: function () {
+      this.messageDanger = ''
+      this.messageSuccess = ''
+    },
     sendPatchRequest: function () {
       this.$http.patch("/profile", this.userPasswordDto, {
             params: {
@@ -63,7 +60,6 @@ export default {
             }
           }
       ).then(response => {
-
         this.messageSuccess = "Parool edukalt uuendatud"
         setTimeout(() => {
           this.$router.go(0)
@@ -73,8 +69,6 @@ export default {
         console.log(error)
       })
     },
-
-
   },
 }
 </script>

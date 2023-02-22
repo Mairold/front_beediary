@@ -4,7 +4,6 @@
       <AlertSuccess style="align-content: center" class="col-3" :message="messageSuccess"/>
       <AlertDanger style="align-content: center" class="col-4" :message="messageDanger"/>
     </div>
-
     <div class="row justify-content-center">
       <div class="col-2" style="align-content: center">
         <label>Külastuse kuupäev</label>
@@ -17,17 +16,13 @@
           <button v-on:click="navigateBack" type="button" class="btn btn-back">Tühista</button>
         </div>
       </div>
-
-
       <div class="col-2 form-floating my-4" style="align-content: center">
         <textarea v-model="visit.notes" class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
         <label for="floatingTextarea2">Märkused</label>
       </div>
     </div>
-
   </div>
 </template>
-
 <script>
 import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 import router from "@/router";
@@ -61,7 +56,6 @@ export default {
     navigateBack: function () {
       router.go(-1)
     },
-
     addNewVisit: function () {
       if (this.allRequiredFieldsAreFilled()) {
         this.postVisit()
@@ -71,9 +65,11 @@ export default {
           this.messageDanger = ''
         }, 2000)
       }
-
     },
-
+    allRequiredFieldsAreFilled: function () {
+      return this.visit.date !== '' &&
+          this.visit.tasks.some(task => task.done)
+    },
     postVisit: function () {
       this.$http.post("/hive/visits", this.visit
       ).then(response => {
@@ -85,14 +81,8 @@ export default {
         console.log(error)
       })
     },
-
-    allRequiredFieldsAreFilled: function () {
-      return this.visit.date !== '' &&
-          this.visit.tasks.some(task => task.done)
-    },
   }
 }
-
 </script>
 
 

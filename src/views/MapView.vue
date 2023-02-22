@@ -3,17 +3,14 @@
     <h1>Mesilad</h1>
     <div class="row justify-content-center" id="container">
       <div id="mapContainer"></div>
-
     </div>
   </div>
 </template>
-
 <script>
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import {latLng} from "leaflet/src/geo";
 import LMarker from "vue2-leaflet/src/components/LMarker.vue";
-
 
 export default {
   name: "MapView",
@@ -48,7 +45,6 @@ export default {
       for (let i = 0; i < this.userApiaries.length; i++) {
         L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
       }
-
     },
     getAllUserApiaries: function () {
       this.$http.get("/apiary", {
@@ -69,11 +65,9 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 #mapContainer {
   width: 80vw;
   height: 100vh;
 }
-
 </style>

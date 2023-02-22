@@ -8,16 +8,14 @@
       <button v-on:click="navigateToLogin" type="button" class="btn btn-warning">Logi sisse</button>
     </div>
   </div>
-
 </template>
-
 <script>
 
 export default {
   name: "HomeView",
   methods: {
     navigateToLogin: function () {
-      this.$router.push({name:'loginRoute'})
+      this.$router.push({name: 'loginRoute'})
     }
   }
 }

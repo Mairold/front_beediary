@@ -1,7 +1,6 @@
 <template>
   <div class="col-6">
-
-    <table class="table table-striped bg-light bg-opacity-50" >
+    <table class="table table-striped bg-light bg-opacity-50">
       <thead>
       <tr>
         <th scope="col">Taru nimi</th>
@@ -27,10 +26,8 @@
       </tr>
       </tbody>
     </table>
-
   </div>
 </template>
-
 <script>
 import VueSimpleAlert from "vue-simple-alert";
 
@@ -67,7 +64,7 @@ export default {
       })
     },
     deleteHive: function (hiveId) {
-      VueSimpleAlert.confirm("Kinnita, et soovid taru kustutada?", "", "question", ).then(() => {
+      VueSimpleAlert.confirm("Kinnita, et soovid taru kustutada?", "", "question",).then(() => {
         this.$http.delete("/apiary/hive", {
               params: {
                 hiveId: hiveId,
@@ -75,13 +72,11 @@ export default {
             }
         ).then(response => {
           this.getAllUserHives(0)
-
         }).catch(error => {
           console.log(error)
         })
       })
     },
-
   },
   beforeMount() {
     this.getAllUserHives(0)

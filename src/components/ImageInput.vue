@@ -16,7 +16,6 @@ export default {
       const selectedImage = event.target.files[0];
       this.emitBase64(selectedImage);
     },
-
     emitBase64: function (fileObject) {
       const reader = new FileReader();
       reader.onload = () => {

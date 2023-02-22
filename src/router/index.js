@@ -10,7 +10,6 @@ import TaskView from "@/views/TaskView.vue";
 import AddVisitView from "@/views/AddVisitView.vue";
 import ForgotPasswordView from "@/views/ForgotPasswordView.vue";
 import mapView from "@/views/MapView.vue";
-
 Vue.use(VueRouter)
 
 const routes = [

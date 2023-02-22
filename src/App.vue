@@ -14,6 +14,9 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#/task">Minu ülesanded</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#/map">Kaart</a>
+            </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -28,8 +31,6 @@
     <router-view @emitLoginSuccessEvent='checkIfIsLoggedIn'/>
   </div>
 </template>
-<simplert />
-
 
 <script>
 export default {

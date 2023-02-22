@@ -45,14 +45,6 @@ export default {
             accessToken: "pk.eyJ1IjoibmlwaXRpcmkyIiwiYSI6ImNsZWU3cnlxZTBlZm4zdnAya3NyM2RpNGUifQ.bXlgwuQ8jpeLz0o0JrOptA",
           }).addTo(map);
 
-      this.getAllUserApiaries();
-
-
-
-      L.marker([59.4370, 24.7536]).addTo(map).bindPopup("Tallinna mesila")
-      L.marker([59.3108, 24.4158]).addTo(map).bindPopup("Keila mesila")
-      L.marker([58.0603, 26.4969]).addTo(map).bindPopup("Keila mesila")
-
       for (let i = 0; i < this.userApiaries.length; i++) {
         L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
       }
@@ -66,13 +58,14 @@ export default {
           }
       ).then(response => {
         this.userApiaries = response.data
+        this.setupLeafletMap()
       }).catch(error => {
         console.log(error)
       })
     }
   },
   mounted() {
-    this.setupLeafletMap();
+    this.getAllUserApiaries();
   }
 }
 </script>

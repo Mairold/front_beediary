@@ -16,18 +16,44 @@
           <td>{{ apiary.latitude }}</td>
           <td>{{ apiary.longitude }}</td>
           <th>
-            <font-awesome-icon v-on:click="emitSelectedApiary(apiary.apiaryId)" class="icon-hover"
+            <font-awesome-icon v-on:click="showModal" class="icon-hover"
                                icon="fa-solid fa-pencil"/>
+
           </th>
         </tr>
         </tbody>
       </table>
     </div>
+    <ModalApiary :show="show">
+      <template #header>
+        <h6> Muuda mesila andmeid </h6>
+      </template>
+      <template #body>
+        <input v-model="userApiaries.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
+        <input type="text" class="form-control my-2" placeholder="Laiuskraad">
+        <input type="text" class="form-control" placeholder="Pikkuskraad">
+      </template>
+      <template #footer>
+        <button
+            class="btn btn-warning my-2"
+            @click="show = false">Uuenda
+        </button>
+        <button
+            class="btn btn-back mx-2"
+            @click="show = false"
+        >Tühista
+        </button>
+      </template>
+
+    </ModalApiary>
   </div>
 </template>
 <script>
+import ModalApiary from "@/components/apiaries/ModalApiary.vue";
+
 export default {
   name: 'ApiariesTable',
+  components: {ModalApiary},
 
   data: function () {
     return {
@@ -40,7 +66,13 @@ export default {
           longitude: 0,
         }
       ],
-
+      userApiary: {
+        apiaryId: 0,
+        apiaryName: '',
+        latitude: 0,
+        longitude: 0,
+      },
+      show: false
     }
   },
   methods: {
@@ -59,11 +91,14 @@ export default {
 
     },
 
-    emitSelectedApiary: function (apiaryId) {
-      this.$parent.isEdit = true
-      this.selectedApiaryId = apiaryId
-      this.$emit('emitSelectedApiaryEvent', apiaryId)
+    showModal: function (apiaryId) {
+      this.show = true
+      this.userApiary.apiaryId = apiaryId
     },
+
+    // setModalInput: function () {
+    //   this.userApiary.apiaryId =
+    // }
 
 
   },

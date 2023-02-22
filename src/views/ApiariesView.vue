@@ -2,7 +2,7 @@
   <div>
     <ApiariesTable ref="apiaryTable" @emitSelectedApiaryEvent="setUserApiary"/>
     <div class="row justify-content-center">
-      <ApiaryEditInput ref="apiaryInput" v-if="isEdit"/>
+
     </div>
   </div>
 
@@ -13,10 +13,11 @@
 import ApiariesTable from "@/components/apiaries/ApiariesTable.vue";
 import ApiaryEditInput from "@/views/ApiaryEditInput.vue";
 import {set} from "vue";
+import ModalApiary from "@/components/apiaries/ModalApiary.vue";
 
 export default {
   name: "ApiariesView",
-  components: {ApiaryEditInput, ApiariesTable},
+  components: {ModalApiary, ApiaryEditInput, ApiariesTable},
   data: function () {
     return {
       isEdit: false,

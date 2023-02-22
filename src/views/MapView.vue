@@ -9,7 +9,6 @@
 <script>
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import {latLng} from "leaflet/src/geo";
 import LMarker from "vue2-leaflet/src/components/LMarker.vue";
 
 export default {
@@ -30,22 +29,6 @@ export default {
     }
   },
   methods: {
-    setupLeafletMap: function () {
-      const map = L.map("mapContainer").setView(this.center, 8);
-      L.tileLayer(
-          "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-          {
-            attribution:
-                'Map data (c) <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: "mapbox/streets-v11",
-            accessToken: "pk.eyJ1IjoibmlwaXRpcmkyIiwiYSI6ImNsZWU3cnlxZTBlZm4zdnAya3NyM2RpNGUifQ.bXlgwuQ8jpeLz0o0JrOptA",
-          }).addTo(map);
-
-      for (let i = 0; i < this.userApiaries.length; i++) {
-        L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
-      }
-    },
     getAllUserApiaries: function () {
       this.$http.get("/apiary", {
             params: {
@@ -58,6 +41,24 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+    setupLeafletMap: function () {
+      const map = L.map("mapContainer").setView(this.center, 8);
+      L.tileLayer(
+          "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+          {
+            attribution:
+                'Map data (c) <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: "mapbox/streets-v11",
+            accessToken: "pk.eyJ1IjoibmlwaXRpcmkyIiwiYSI6ImNsZWU3cnlxZTBlZm4zdnAya3NyM2RpNGUifQ.bXlgwuQ8jpeLz0o0JrOptA",
+          }).addTo(map);
+      this.addPins(map);
+    },
+    addPins: function (map) {
+      for (let i = 0; i < this.userApiaries.length; i++) {
+        L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
+      }
     }
   },
   mounted() {

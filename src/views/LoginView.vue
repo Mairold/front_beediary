@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="!loading">
       <br/>
       <h3>Logi sisse</h3>
       <br>
@@ -28,6 +29,12 @@
         </div>
       </div>
     </div>
+
+      <div>
+        <img height="430" v-if="loading" src="../assets/buzzbee.gif">
+      </div>
+
+  </div>
 </template>
 <script>
 import AlertDanger from "@/components/alerts/AlertDanger.vue";
@@ -55,11 +62,13 @@ export default {
           password: this.password
         }
       }).then(response => {
-
+        this.loading = true
         this.loginResponse = response.data
         sessionStorage.setItem('userId', this.loginResponse.userId)
-        this.$emit('emitLoginSuccessEvent')
-        this.$router.push({name: 'apiaryHivesRoute'})
+        setTimeout(() => {
+          this.$emit('emitLoginSuccessEvent')
+          this.$router.push({name: 'apiaryHivesRoute'})
+        }, 4000)
       }).catch(error => {
         this.messageError = "Vale kasutajanimi või parool!"
         this.$parent.timeoutAndReloadPage(2500)

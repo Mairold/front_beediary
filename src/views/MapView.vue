@@ -47,13 +47,15 @@ export default {
 
       this.getAllUserApiaries();
 
-      for (let i = 0; i < this.userApiaries.length; i++) {
-        L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
-      }
+
 
       L.marker([59.4370, 24.7536]).addTo(map).bindPopup("Tallinna mesila")
       L.marker([59.3108, 24.4158]).addTo(map).bindPopup("Keila mesila")
       L.marker([58.0603, 26.4969]).addTo(map).bindPopup("Keila mesila")
+
+      for (let i = 0; i < this.userApiaries.length; i++) {
+        L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
+      }
 
     },
     getAllUserApiaries: function () {

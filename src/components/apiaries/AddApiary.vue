@@ -6,10 +6,12 @@
       <input v-model="apiaryRequest.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
     </div>
     <div class="input-group mb-3">
-      <input v-model="apiaryRequest.latitude" type="text" class="form-control" placeholder="Laiuskraad">
+      <span class="input-group-text">Laiuskraad</span>
+      <input v-model="apiaryRequest.latitude" type="text" class="form-control" placeholder="nt. 59.3780">
     </div>
     <div class="input-group mb-3">
-      <input v-model="apiaryRequest.longitude" type="text" class="form-control" placeholder="Pikkuskraad">
+      <span class="input-group-text">Laiuskraad</span>
+      <input v-model="apiaryRequest.longitude" type="text" class="form-control" placeholder="nt. 24.8428">
     </div>
     <div>
       <button v-on:click="addApiary" type="button" class="btn btn-warning mx-2">Lisa</button>

@@ -1,6 +1,9 @@
 <template>
+
   <div class="row justify-content-center">
-    <div class="col-4 my-4" style="align-content: center">
+    <div class="col-4 my-5" style="align-content: center">
+      <AlertSuccess :message="messageSuccess"/>
+
       <table class="table table-striped bg-light bg-opacity-50">
         <thead>
         <tr>
@@ -16,44 +19,37 @@
           <td>{{ apiary.latitude }}</td>
           <td>{{ apiary.longitude }}</td>
           <th>
-            <font-awesome-icon v-on:click="showModal" class="icon-hover"
-                               icon="fa-solid fa-pencil"/>
-
+            <font-awesome-icon v-on:click="showModal(apiary)" class="icon-hover" icon="fa-solid fa-pencil"/>
           </th>
         </tr>
         </tbody>
       </table>
+
     </div>
     <ModalApiary :show="show">
       <template #header>
         <h6> Muuda mesila andmeid </h6>
       </template>
       <template #body>
-        <input v-model="userApiaries.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
-        <input type="text" class="form-control my-2" placeholder="Laiuskraad">
-        <input type="text" class="form-control" placeholder="Pikkuskraad">
+        <input v-model="userApiary.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
+        <input v-model="userApiary.latitude" type="text" class="form-control my-2" placeholder="Laiuskraad">
+        <input v-model="userApiary.longitude" type="text" class="form-control" placeholder="Pikkuskraad">
       </template>
       <template #footer>
-        <button
-            class="btn btn-warning my-2"
-            @click="show = false">Uuenda
-        </button>
-        <button
-            class="btn btn-back mx-2"
-            @click="show = false"
-        >Tühista
-        </button>
+        <button v-on:click="updateApiary" class="btn btn-warning my-2">Uuenda</button>
+        <button class="btn btn-back mx-2" @click="show = false">Tühista</button>
       </template>
-
     </ModalApiary>
+
   </div>
 </template>
 <script>
 import ModalApiary from "@/components/apiaries/ModalApiary.vue";
+import AlertSuccess from "@/components/alerts/AlertSuccess.vue";
 
 export default {
   name: 'ApiariesTable',
-  components: {ModalApiary},
+  components: {AlertSuccess, ModalApiary},
 
   data: function () {
     return {
@@ -72,7 +68,8 @@ export default {
         latitude: 0,
         longitude: 0,
       },
-      show: false
+      show: false,
+      messageSuccess: ''
     }
   },
   methods: {
@@ -91,14 +88,32 @@ export default {
 
     },
 
-    showModal: function (apiaryId) {
+    showModal: function (apiary) {
       this.show = true
-      this.userApiary.apiaryId = apiaryId
+      this.userApiary.apiaryId = apiary.apiaryId
+      this.userApiary.apiaryName = apiary.apiaryName
+      this.userApiary.latitude = apiary.latitude
+      this.userApiary.longitude = apiary.longitude
     },
 
-    // setModalInput: function () {
-    //   this.userApiary.apiaryId =
-    // }
+    updateApiary: function () {
+      this.$http.patch("/apiary", this.userApiary, {
+            params: {
+              apiaryId: this.userApiary.apiaryId
+            }
+          }
+      ).then(response => {
+
+        this.show = false
+        this.messageSuccess = "Andmed edukalt uuendatud!"
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 1500)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
 
 
   },

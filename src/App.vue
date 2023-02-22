@@ -69,7 +69,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: rgba(231, 161, 31, 0.95);
+  color: rgb(10, 10, 10);
   background-image: url("../src/assets/background.jpeg");
   min-height: 100vh
 }

@@ -10,7 +10,6 @@
             </li><li class="nav-item">
               <a class="nav-link" href="#/apiary">Minu tarud</a>
             </li>
-
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Minu mesilad
@@ -27,26 +26,40 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a v-on:click="logout" class="nav-link" href="/">
+              <a v-on:click="show = true" class="nav-link">
                 <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket"/>
                 Logi Välja</a>
             </li>
           </ul>
         </div>
       </div>
+      <ModalApiary :show="show">
+        <template #header>
+          <h6> Kohtumiseni! </h6>
+        </template>
+        <template #body>
+          <img alt="Bye" src="assets/bee_bye.gif" >
+        </template>
+        <template #footer>
+          <button class="btn btn-back mx-2" @click="show = false">Tühista</button>
+          <button class="btn btn-warning mx-2" v-on:click="logout">Logi välja</button>
+        </template>
+      </ModalApiary>
     </nav>
     <router-view @emitLoginSuccessEvent='checkIfIsLoggedIn'/>
   </div>
 </template>
 <script>
 import HomeView from "@/views/HomeView.vue";
+import ModalApiary from "@/components/apiaries/ModalApiary.vue";
 
 export default {
   name: 'AppView',
-  components: {HomeView},
+  components: {ModalApiary, HomeView},
   data: function () {
     return {
-      isLoggedIn: false
+      isLoggedIn: false,
+      show: false
     }
   },
   methods: {
@@ -60,6 +73,7 @@ export default {
     logout: function () {
       sessionStorage.clear()
       this.isLoggedIn = false
+        this.$router.push({name: 'homeRoute'})
     },
     timeoutAndReloadPage: function (timeOut) {
       setTimeout(() => {

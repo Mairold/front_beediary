@@ -66,6 +66,7 @@ export default {
         this.isLoggedIn = false
       } else {
         this.isLoggedIn = true
+        this.show = false
       }
     },
     logout: function () {

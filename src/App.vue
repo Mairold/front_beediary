@@ -39,8 +39,11 @@
   </div>
 </template>
 <script>
+import HomeView from "@/views/HomeView.vue";
+
 export default {
   name: 'AppView',
+  components: {HomeView},
   data: function () {
     return {
       isLoggedIn: false
@@ -70,7 +73,6 @@ export default {
 }
 </script>
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -80,6 +82,7 @@ export default {
   background-image: url("../src/assets/background.jpeg");
   min-height: 100vh
 }
+
 nav {
   padding: 30px;
 }

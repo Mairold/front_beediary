@@ -3,8 +3,7 @@
     <div v-if="!loading">
       <br/>
       <h3>Logi sisse</h3>
-      <br>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center my-4">
         <div class="col-3">
           <AlertDanger :message="messageError"/>
           <div>

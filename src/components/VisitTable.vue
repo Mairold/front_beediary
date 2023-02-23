@@ -32,11 +32,9 @@
       </tr>
       </tbody>
     </table>
-    <br>
     <div class="row col-2">
-      <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-warning">Lisa uus</button>
+      <button v-on:click="navigateToAddVisitView" type="button" class="btn btn-warning my-3">Lisa uus</button>
     </div>
-    <br>
   </div>
 </template>
 <script>

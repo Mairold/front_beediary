@@ -1,13 +1,13 @@
 <template>
   <div>
-  <h6>Tehtud tegevused</h6>
+  <h6 class="my-3" style="font-weight: bold" >Tehtud tegevused</h6>
   <div v-for="task in visit.tasks" class="form-check">
     <input v-model="task.done" class="form-check-input" type="checkbox">
     <label class="form-check-label">
       {{ task.taskName }}
     </label>
   </div>
-  <br><h6>Ülesanded</h6>
+  <h6 class="my-3" style="font-weight: bold">Ülesanded</h6>
   <div v-for="task in visit.tasks" class="form-check">
     <input v-model="task.toDo" class="form-check-input" type="checkbox">
     <label class="form-check-label">

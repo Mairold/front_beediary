@@ -10,7 +10,7 @@
       <input v-model="apiaryRequest.latitude" type="text" class="form-control" placeholder="nt. 59.3780">
     </div>
     <div class="input-group mb-3">
-      <span class="input-group-text">Laiuskraad</span>
+      <span class="input-group-text">Pikkuskraad</span>
       <input v-model="apiaryRequest.longitude" type="text" class="form-control" placeholder="nt. 24.8428">
     </div>
     <div>

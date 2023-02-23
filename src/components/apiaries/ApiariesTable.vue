@@ -32,8 +32,14 @@
       </template>
       <template #body>
         <input v-model="userApiary.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
-        <input v-model="userApiary.latitude" type="text" class="form-control my-2" placeholder="Laiuskraad">
-        <input v-model="userApiary.longitude" type="text" class="form-control" placeholder="Pikkuskraad">
+        <div class="input-group mb-3 my-3">
+          <span class="input-group-text">Laiuskraad</span>
+          <input v-model="userApiary.latitude" type="text" class="form-control" placeholder="Laiuskraad">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Pikkuskraad</span>
+          <input v-model="userApiary.longitude" type="text" class="form-control" placeholder="Pikkuskraad">
+        </div>
       </template>
       <template #footer>
         <button v-on:click="updateApiary" class="btn btn-warning my-2">Uuenda</button>
@@ -113,7 +119,6 @@ export default {
         console.log(error)
       })
     },
-
 
 
   },

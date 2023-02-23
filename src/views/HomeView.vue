@@ -15,11 +15,6 @@
 
 export default {
   name: "HomeView",
-  data: function () {
-    return {
-
-    }
-  },
   methods: {
     navigateToLogin: function () {
       this.$router.push({name: 'loginRoute'})

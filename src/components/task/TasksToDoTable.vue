@@ -80,7 +80,7 @@ export default {
       })
     },
     deleteToDoTask: function (visitId, taskId) {
-      VueSimpleAlert.confirm("Kinnita, et tegevus on tehtud?").then(() => {
+      VueSimpleAlert.confirm("Kinnita, et tegevus on tehtud?","", "question").then(() => {
         this.$http.delete("/tasks", {
               params: {
                 visitId: visitId,

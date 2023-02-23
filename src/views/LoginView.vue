@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login">
     <div v-if="!loading">
       <br/>
       <h3>Logi sisse</h3>
@@ -76,3 +76,13 @@ export default {
   }
 }
 </script>
+<style>
+#login {
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-image: url("~@/assets/flower_background.png");
+  min-height: 100vh;
+  background-size: contain;
+}
+</style>
+

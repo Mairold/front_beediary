@@ -10,7 +10,7 @@
         </button>
       </div>
       <div>
-        <button v-on:click="$router.go(-1)" type="button" class="btn btn-back">Tagasi</button>
+        <button v-if="isView" v-on:click="$router.go(-1)" type="button" class="btn btn-back">Tagasi</button>
       </div>
       <h4 v-if="isSent">Uus parool on sinu emailile saadetud!</h4>
     </div>

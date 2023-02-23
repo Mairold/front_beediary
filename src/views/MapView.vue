@@ -4,20 +4,48 @@
     <div class="row justify-content-center" id="container">
       <div id="mapContainer"></div>
     </div>
+    <ModalApiary :show="show">
+      <template #header>
+        <h6> Mesila andmed </h6>
+      </template>
+      <template #body>
+        <input v-model="userApiary.apiaryName" type="text" class="form-control" placeholder="Mesila nimi">
+        <div class="input-group mb-3 my-3">
+          <span class="input-group-text">Laiuskraad</span>
+          <input v-model="userApiary.latitude" type="text" class="form-control" placeholder="Laiuskraad">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Pikkuskraad</span>
+          <input v-model="userApiary.longitude" type="text" class="form-control" placeholder="Pikkuskraad">
+        </div>
+      </template>
+      <template #footer>
+        <button v-on:click="updateApiary" class="btn btn-warning my-2">Uuenda</button>
+        <button class="btn btn-back mx-2" @click="show = false">Tühista</button>
+      </template>
+    </ModalApiary>
   </div>
 </template>
 <script>
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import LMarker from "vue2-leaflet/src/components/LMarker.vue";
+import ModalApiary from "@/components/apiaries/ModalApiary.vue";
 
 export default {
   name: "MapView",
-  components: {LMarker},
+  components: {ModalApiary, LMarker},
   data: function () {
     return {
       center: [58.6552, 25.9769],
       userId: sessionStorage.getItem('userId'),
+      show: false,
+      userApiary: {
+        apiaryId: 0,
+        apiaryName: '',
+        latitude: 0,
+        longitude: 0,
+      },
       userApiaries: [
         {
           apiaryId: 0,
@@ -61,11 +89,20 @@ export default {
         L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
       }
     },
+    // addNewPin: function (map) {
+    //   map.on("click", function (e) {
+    //     var marker = new L.marker(e.latlng).addTo(map)
+    //         .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)));
+    //   })
+    // },
     addNewPin: function (map) {
       map.on("click", function (e) {
         var marker = new L.marker(e.latlng).addTo(map)
-            .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)));
+            .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)) + "<br>" + "<button @click=showModal>Lisa mesila</button>");
       })
+    },
+    showModal: function () {
+      this.show = true
     }
   },
   mounted() {

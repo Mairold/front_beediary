@@ -21,27 +21,25 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#/task">Minu ülesanded</a>
+              <a class="nav-link" href="#/task">Minu ülesanded</a>
             </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a v-on:click="show = true" class="nav-link">
-                <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket"/>
-                Logi Välja</a>
+              <a class="nav-link" v-on:click="show = true"><font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket"/> Logi Välja</a>
             </li>
           </ul>
         </div>
       </div>
       <ModalApiary :show="show">
         <template #header>
-          <h6> Kohtumiseni! </h6>
+          <h4> Kohtumiseni! </h4>
         </template>
         <template #body>
-          <img alt="Bye" src="assets/bee_bye.gif" >
+          <img alt="Bye" src="./assets/bee_bye.gif" height="250" width="250">
         </template>
         <template #footer>
-          <button class="btn btn-back mx-2" @click="show = false">Tühista</button>
+          <button class="btn btn-back mx-2 my-2" @click="show = false">Tühista</button>
           <button class="btn btn-warning mx-2" v-on:click="logout">Logi välja</button>
         </template>
       </ModalApiary>

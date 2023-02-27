@@ -64,9 +64,6 @@ export default {
   },
   methods: {
 
-
-    },
-
     deleteHive: function (hiveId) {
       VueSimpleAlert.confirm("Kinnita, et soovid taru kustutada?", "", "question",).then(() => {
         this.$http.delete("/apiary/hive", {
@@ -97,8 +94,6 @@ export default {
         console.log(error)
       })
     },
-
-
   },
   beforeMount() {
     this.getAllUserHives(0)

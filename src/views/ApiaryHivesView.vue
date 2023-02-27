@@ -2,7 +2,7 @@
   <div>
     <div class="row" style="padding-left: 125px">
       <ApiariesDropdown class="col-2 my-4" @emitSelectedApiaryIdEvent="setSelectedApiaryId"/>
-      <HivesTable style="align-content: center" class="col-6 my-4" ref="hives"/>
+      <HivesTable style="align-content: center" class="col-8 my-4" ref="hives"/>
       <div>
         <button v-on:click="navigateToAddHiveView" type="button" class="btn btn-warning">Lisa uus taru</button>
       </div>

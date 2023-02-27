@@ -6,6 +6,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.js"
 import "../src/assets/myStyle.css"
+import SortedTablePlugin from "vue-sorted-table";
 
 //leaflet map stuff
 // eslint-disable-next-line
@@ -29,6 +30,10 @@ library.add(faUserSecret, fas, faR, far)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
+
+
+
+Vue.use(SortedTablePlugin);
 
 new Vue({
     router,

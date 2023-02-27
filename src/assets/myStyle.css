@@ -3,6 +3,11 @@
     cursor: pointer;
     height: 20px;
 }
+.text-hover:hover {
+    color: goldenrod;
+    cursor: pointer;
+    height: 20px;
+}
 .btn-back {
     --bs-btn-color: #ffc107;
     --bs-btn-bg: #000;

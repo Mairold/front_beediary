@@ -4,11 +4,10 @@
       <thead>
       <tr>
         <th scope="col">Taru nimi</th>
-        <th scope="col">Viimati külastatud <font-awesome-icon v-on:click="sortByDates" icon="fa-solid fa-sort-down" class="icon-hover"/></th>
+        <th scope="col">Viimati külastatud</th>
         <th scope="col">Ülesanded</th>
         <th scope="col">Mesila</th>
         <th scope="col">Tehtud</th>
-        <th></th>
       </tr>
       </thead>
       <tbody v-for="visit in visits">

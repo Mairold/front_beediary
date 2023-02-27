@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <ApiariesTable ref="apiaryTable" @emitSelectedApiaryEvent="setUserApiary"/>
     <div class="row justify-content-center">
 

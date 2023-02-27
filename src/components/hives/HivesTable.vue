@@ -8,7 +8,7 @@
           <SortLink class="text-hover" name="hiveName">Taru nimi</SortLink>
         </th>
         <th scope="col" style="text-align: center">
-          <SortLink class="text-hover"  name="lastVisitDate">Viimati külastatud</SortLink>
+          <SortLink class="text-hover"  name="lastVisitLocalDate">Viimati külastatud</SortLink>
         </th><th scope="col" style="text-align: center">
           <SortLink class="text-hover" name="typeSize">Taru suurus</SortLink>
         </th>
@@ -57,7 +57,8 @@ export default {
           typeSize: '',
           lastVisitDate: '',
           hiveName: '',
-          hivePicture: ''
+          hivePicture: '',
+          lastVisitLocalDate: '',
         }
       ],
     }

@@ -89,16 +89,11 @@ export default {
         L.marker([this.userApiaries[i].latitude, this.userApiaries[i].longitude]).addTo(map).bindPopup(this.userApiaries[i].apiaryName)
       }
     },
-    // addNewPin: function (map) {
-    //   map.on("click", function (e) {
-    //     var marker = new L.marker(e.latlng).addTo(map)
-    //         .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)));
-    //   })
-    // },
+
     addNewPin: function (map) {
       map.on("click", function (e) {
         var marker = new L.marker(e.latlng).addTo(map)
-            .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)) + "<br>" + "<button @click=showModal>Lisa mesila</button>");
+            .bindPopup("Koordinaadid: " + "<br>" + String(e.latlng.lat.toPrecision(6)) + "<br>" + String(e.latlng.lng.toPrecision(6)) + "<br>" + "<button onclick='showModal()'>Lisa mesila</button>");
       })
     },
     showModal: function () {

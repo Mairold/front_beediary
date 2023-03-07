@@ -47,6 +47,7 @@
     <router-view @emitLoginSuccessEvent='checkIfIsLoggedIn'/>
   </div>
 </template>
+
 <script>
 import HomeView from "@/views/HomeView.vue";
 import ModalApiary from "@/components/apiaries/ModalApiary.vue";
@@ -60,6 +61,7 @@ export default {
       show: false
     }
   },
+
   methods: {
     checkIfIsLoggedIn: function () {
       if (sessionStorage.getItem('userId') == null) {
@@ -69,22 +71,27 @@ export default {
         this.show = false
       }
     },
+
     logout: function () {
       sessionStorage.clear()
       this.isLoggedIn = false
         this.$router.push({name: 'homeRoute'})
     },
+
     timeoutAndReloadPage: function (timeOut) {
       setTimeout(() => {
         this.$router.go(0)
       }, timeOut)
     },
   },
+
   beforeMount() {
     this.checkIfIsLoggedIn()
   }
 }
 </script>
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -99,10 +106,12 @@ export default {
 nav {
   padding: 30px;
 }
+
 nav a {
   font-weight: bold;
   color: rgba(231, 161, 31, 0.95);
 }
+
 nav a.router-link-exact-active {
   color: #b37a00;
 }
